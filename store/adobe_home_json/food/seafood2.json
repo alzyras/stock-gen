@@ -1,0 +1,123 @@
+[
+    {
+        "title": "Grilled Octopus",
+        "description": "Tender grilled octopus marinated in olive oil, lemon, and herbs, served with a sprinkle of paprika. A Mediterranean delight with a smoky flavor.",
+        "tags": [
+            "octopus", "grilled", "Mediterranean", 
+            "tender", "smoky flavor", "seafood", 
+            "marinated", "olive oil", "herbs", 
+            "appetizer", "sophisticated", "gourmet", 
+            "easy recipe", "charred", "healthy", 
+            "high protein", "restaurant-style", "fresh"
+        ]
+    },
+    {
+        "title": "Squid Ink Pasta",
+        "description": "Delicious pasta infused with squid ink, served with a seafood sauce and topped with fresh parsley. A visually striking dish with rich flavors.",
+        "tags": [
+            "squid", "pasta", "ink", 
+            "seafood", "rich flavor", "gourmet", 
+            "visual appeal", "fresh parsley", "Italian cuisine", 
+            "unique dish", "elegant", "dinner party", 
+            "quick meal", "high protein", "homemade", 
+            "restaurant-style", "comfort food", "delicious"
+        ]
+    },
+    {
+        "title": "Fried Calamari",
+        "description": "Crispy fried calamari rings served with marinara sauce and lemon wedges. A classic appetizer that's crunchy and delicious.",
+        "tags": [
+            "calamari", "fried", "appetizer", 
+            "seafood", "crispy", "marinara sauce", 
+            "lemon wedges", "party food", "finger food", 
+            "easy to make", "light meal", "popular", 
+            "comfort food", "quick cooking", "casual dining", 
+            "rich texture", "tasty", "seafood lovers"
+        ]
+    },
+    {
+        "title": "Stuffed Squid",
+        "description": "Tender squid stuffed with a flavorful mixture of breadcrumbs, herbs, and seafood, then baked to perfection. A hearty and satisfying dish.",
+        "tags": [
+            "stuffed squid", "seafood", "hearty", 
+            "baked", "breadcrumbs", "herbs", 
+            "satisfying", "easy recipe", "comfort food", 
+            "rich flavor", "traditional", "homemade", 
+            "dinner", "elegant", "gourmet", 
+            "seafood lovers", "unique dish", "tender"
+        ]
+    },
+    {
+        "title": "Octopus Salad",
+        "description": "Light and refreshing salad featuring tender octopus, mixed greens, cherry tomatoes, and a lemon vinaigrette. Perfect for a summer meal.",
+        "tags": [
+            "octopus", "salad", "light meal", 
+            "seafood", "fresh ingredients", "healthy", 
+            "summer food", "lemon vinaigrette", "mixed greens", 
+            "cherry tomatoes", "easy recipe", "gourmet", 
+            "quick meal", "sophisticated", "nutritious", 
+            "colorful", "elegant", "seafood lovers"
+        ]
+    },
+    {
+        "title": "Octopus Carpaccio",
+        "description": "Thinly sliced octopus drizzled with olive oil and lemon juice, garnished with capers and arugula. A delicate and flavorful dish.",
+        "tags": [
+            "octopus", "carpaccio", "seafood", 
+            "delicate", "sliced", "olive oil", 
+            "lemon juice", "capers", "arugula", 
+            "gourmet", "sophisticated", "appetizer", 
+            "high protein", "fresh ingredients", "healthy", 
+            "unique dish", "low-calorie", "elegant", 
+            "restaurant-style", "fine dining"
+        ]
+    },
+    {
+        "title": "Squid Salad",
+        "description": "Refreshing salad made with tender squid, bell peppers, olives, and a tangy vinaigrette. A perfect starter or light main dish.",
+        "tags": [
+            "squid", "salad", "seafood", 
+            "refreshing", "bell peppers", "olives", 
+            "tangy vinaigrette", "light meal", "easy recipe", 
+            "healthy", "quick meal", "colorful", 
+            "nutritious", "gourmet", "simple", 
+            "appetizer", "seafood lovers", "fresh ingredients"
+        ]
+    },
+    {
+        "title": "Octopus Stew",
+        "description": "Hearty octopus stew simmered with tomatoes, potatoes, and spices. A comforting dish that's perfect for cooler weather.",
+        "tags": [
+            "octopus", "stew", "seafood", 
+            "hearty", "comfort food", "simmered", 
+            "tomatoes", "potatoes", "spices", 
+            "traditional", "rich flavor", "homemade", 
+            "filling", "winter meal", "easy recipe", 
+            "gourmet", "unique dish", "satisfying"
+        ]
+    },
+    {
+        "title": "Spicy Grilled Squid",
+        "description": "Grilled squid marinated in a spicy sauce, served with a side of dipping sauce. A flavorful dish that's perfect for those who love heat.",
+        "tags": [
+            "squid", "grilled", "spicy", 
+            "seafood", "marinated", "dipping sauce", 
+            "flavorful", "appetizer", "unique dish", 
+            "summer grilling", "easy recipe", "casual dining", 
+            "high protein", "party food", "tender", 
+            "delicious", "quick cooking", "smoky flavor"
+        ]
+    },
+    {
+        "title": "Crispy Octopus Bites",
+        "description": "Tender octopus pieces coated in seasoned breadcrumbs and fried until crispy. Served with a garlic aioli for dipping.",
+        "tags": [
+            "octopus", "crispy", "fried", 
+            "seafood", "appetizer", "tender", 
+            "garlic aioli", "party food", "finger food", 
+            "easy to make", "quick meal", "rich flavor", 
+            "popular", "comfort food", "satisfying", 
+            "unique dish", "fun snack", "casual dining"
+        ]
+    }
+]

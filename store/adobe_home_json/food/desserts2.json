@@ -1,0 +1,122 @@
+[
+    {
+        "title": "Lavender Honey Ice Cream",
+        "description": "A creamy, homemade ice cream infused with the delicate flavors of lavender and sweet honey. This aromatic treat is both refreshing and unique, perfect for warm summer evenings or as a sophisticated dessert.",
+        "tags": [
+            "ice cream", "lavender", "honey", 
+            "homemade", "creamy", "unique flavor", 
+            "refreshing", "summer dessert", "elegant", 
+            "artisan", "sweets", "floral", 
+            "gourmet", "frozen treat", "dessert lovers", 
+            "culinary creativity", "chilled desserts"
+        ]
+    },
+    {
+        "title": "Matcha Green Tea Tiramisu",
+        "description": "A delightful twist on the classic tiramisu, featuring layers of matcha-soaked ladyfingers and creamy mascarpone, dusted with vibrant green matcha powder. This dessert combines the rich flavor of green tea with the traditional tiramisu texture.",
+        "tags": [
+            "matcha", "tiramisu", "dessert", 
+            "green tea", "layered dessert", "unique", 
+            "creamy", "Japanese flavors", "indulgent", 
+            "elegant presentation", "homemade", "modern twist", 
+            "culinary fusion", "sweet treat", "baking", 
+            "satisfying", "dessert lovers", "gourmet"
+        ]
+    },
+    {
+        "title": "Cinnamon Roll Bread Pudding",
+        "description": "A cozy dessert made from leftover cinnamon rolls, baked in a rich custard and topped with a sweet glaze. This bread pudding is warm, comforting, and perfect for a delightful breakfast or dessert treat.",
+        "tags": [
+            "bread pudding", "cinnamon rolls", "dessert", 
+            "warm dessert", "comfort food", "easy recipe", 
+            "baking", "homemade", "sweet treat", 
+            "breakfast dessert", "indulgent", "cozy", 
+            "cinnamon", "glazed", "family favorite", 
+            "satisfying", "leftover recipe", "delicious"
+        ]
+    },
+    {
+        "title": "Peach Melba with Vanilla Ice Cream",
+        "description": "A classic dessert featuring poached peaches served with raspberry sauce and creamy vanilla ice cream. This dish is a perfect balance of sweet and tart, highlighting the flavors of summer.",
+        "tags": [
+            "peach melba", "dessert", "poached peaches", 
+            "vanilla ice cream", "raspberry sauce", "summer treat", 
+            "elegant presentation", "light dessert", "fruity", 
+            "classic recipe", "refreshing", "homemade", 
+            "satisfying", "culinary delight", "sweet treat", 
+            "gourmet", "dessert lovers"
+        ]
+    },
+    {
+        "title": "Chocolate Hazelnut Tart",
+        "description": "A rich chocolate tart with a buttery hazelnut crust, filled with smooth chocolate ganache and topped with toasted hazelnuts. This indulgent dessert is a chocolate lover's dream and is perfect for special occasions.",
+        "tags": [
+            "chocolate tart", "hazelnut", "dessert", 
+            "rich flavors", "ganache", "indulgent", 
+            "elegant presentation", "special occasion", "baking", 
+            "gourmet", "buttery crust", "sweet treat", 
+            "homemade", "decadent", "fancy dessert", 
+            "culinary artistry", "dessert lovers"
+        ]
+    },
+    {
+        "title": "Mango Sticky Rice",
+        "description": "A traditional Thai dessert made with sweet sticky rice, fresh ripe mango slices, and drizzled with coconut cream. This dish offers a delightful combination of textures and flavors, perfect for tropical dessert lovers.",
+        "tags": [
+            "mango sticky rice", "Thai dessert", "coconut cream", 
+            "sticky rice", "tropical flavors", "sweet", 
+            "refreshing", "traditional", "dessert lovers", 
+            "homemade", "exotic", "comfort food", 
+            "fruity", "simple recipe", "cultural cuisine", 
+            "unique flavors", "delicious"
+        ]
+    },
+    {
+        "title": "Pumpkin Spice Latte Cheesecake",
+        "description": "A seasonal favorite, this cheesecake features a creamy pumpkin spice filling on a graham cracker crust, topped with whipped cream and a sprinkle of cinnamon. This dessert captures the essence of fall in every bite.",
+        "tags": [
+            "pumpkin cheesecake", "dessert", "fall flavors", 
+            "spice", "graham cracker crust", "seasonal", 
+            "whipped cream", "indulgent", "homemade", 
+            "satisfying", "classic dessert", "baking", 
+            "festive", "pumpkin spice", "comfort food", 
+            "sweet treat", "easy recipe", "party food"
+        ]
+    },
+    {
+        "title": "Chocolate Chip Cookie Dough Brownies",
+        "description": "Fudgy brownies layered with a rich chocolate chip cookie dough topping. These decadent treats combine two beloved desserts into one, making them a favorite for any chocolate lover.",
+        "tags": [
+            "brownies", "cookie dough", "dessert", 
+            "chocolate chip", "fudgy", "indulgent", 
+            "sweet treat", "easy recipe", "baking", 
+            "layered dessert", "comfort food", "homemade", 
+            "decadent", "chocolate lovers", "party food", 
+            "satisfying", "family favorite", "dessert lovers"
+        ]
+    },
+    {
+        "title": "Raspberry Almond Cake",
+        "description": "A moist almond cake studded with fresh raspberries, topped with a light almond glaze. This cake is fragrant and flavorful, perfect for afternoon tea or as a light dessert after a meal.",
+        "tags": [
+            "almond cake", "raspberries", "dessert", 
+            "moist", "light glaze", "afternoon tea", 
+            "easy recipe", "homemade", "baking", 
+            "sweet treat", "refreshing", "elegant presentation", 
+            "fruit dessert", "satisfying", "gourmet", 
+            "simple pleasures", "dessert lovers"
+        ]
+    },
+    {
+        "title": "Salted Caramel Pecan Pie",
+        "description": "A classic pecan pie with a twist, featuring a rich salted caramel filling and toasted pecans. This dessert combines sweet and salty flavors, making it a standout for any holiday gathering.",
+        "tags": [
+            "pecan pie", "salted caramel", "dessert", 
+            "holiday favorite", "sweet and salty", "indulgent", 
+            "classic recipe", "baking", "homemade", 
+            "elegant presentation", "special occasion", "comfort food", 
+            "sweet treat", "decadent", "family recipe", 
+            "culinary delight", "dessert lovers"
+        ]
+    }
+]

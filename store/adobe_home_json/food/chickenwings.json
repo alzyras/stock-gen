@@ -1,0 +1,122 @@
+[
+    {
+        "title": "Classic Buffalo Wings",
+        "description": "Crispy chicken wings tossed in a tangy, spicy buffalo sauce, served with celery sticks and blue cheese dip. A timeless choice for wing lovers who crave heat and flavor.",
+        "tags": [
+            "buffalo wings", "spicy", "classic recipe", 
+            "chicken wings", "blue cheese dip", "celery sticks", 
+            "crispy", "American cuisine", "game day food", 
+            "comfort food", "meat lovers", "bar food", 
+            "tangy flavor", "fried wings", "popular appetizer", 
+            "handheld food", "bold flavors", "fiery taste"
+        ]
+    },
+    {
+        "title": "Honey BBQ Wings",
+        "description": "Sweet and smoky honey BBQ wings coated in a rich sauce made from honey and barbecue spices. These wings are perfect for those who love a milder, sweet flavor.",
+        "tags": [
+            "honey BBQ wings", "sweet and smoky", "barbecue sauce", 
+            "mild flavor", "chicken wings", "family favorite", 
+            "comfort food", "sticky glaze", "meat lovers", 
+            "baked wings", "popular choice", "American cuisine", 
+            "finger-licking good", "appetizer", "crowd-pleaser", 
+            "handheld food", "glazed wings", "game day snack"
+        ]
+    },
+    {
+        "title": "Garlic Parmesan Wings",
+        "description": "Baked or fried chicken wings coated in a savory garlic and Parmesan cheese sauce. A savory, cheesy twist that offers a break from traditional spicy flavors.",
+        "tags": [
+            "garlic Parmesan wings", "cheesy", "savory", 
+            "chicken wings", "garlic flavor", "Parmesan cheese", 
+            "comfort food", "non-spicy", "Italian-inspired", 
+            "meat lovers", "baked wings", "crispy", 
+            "bar food", "appetizer", "handheld food", 
+            "popular choice", "creamy sauce", "family friendly"
+        ]
+    },
+    {
+        "title": "Korean Gochujang Wings",
+        "description": "Crispy wings tossed in a spicy, sweet, and tangy gochujang sauce, garnished with sesame seeds and green onions. Perfect for fans of Korean flavors with a bit of heat.",
+        "tags": [
+            "gochujang wings", "spicy", "Korean cuisine", 
+            "chicken wings", "sweet and tangy", "crispy", 
+            "sesame seeds", "green onions", "Asian flavors", 
+            "bold flavors", "meat lovers", "handheld food", 
+            "sticky glaze", "cultural cuisine", "unique flavors", 
+            "appetizer", "popular choice", "street food inspired"
+        ]
+    },
+    {
+        "title": "Lemon Pepper Wings",
+        "description": "Chicken wings seasoned with a bright lemon pepper rub for a zesty, citrusy flavor. A great option for those who prefer wings without sauce but still crave bold seasoning.",
+        "tags": [
+            "lemon pepper wings", "citrusy", "zesty flavor", 
+            "chicken wings", "dry rub", "non-spicy", 
+            "crispy", "meat lovers", "appetizer", 
+            "comfort food", "American cuisine", "bar food", 
+            "family friendly", "popular choice", "handheld food", 
+            "bright flavor", "seasoned wings", "simple flavors"
+        ]
+    },
+    {
+        "title": "Mango Habanero Wings",
+        "description": "Chicken wings coated in a mango habanero sauce for a unique mix of tropical sweetness and spicy heat. Ideal for adventurous eaters who love a blend of sweet and hot.",
+        "tags": [
+            "mango habanero wings", "spicy", "sweet and hot", 
+            "tropical flavor", "chicken wings", "fruit glaze", 
+            "crispy", "meat lovers", "unique taste", 
+            "adventurous flavors", "handheld food", "appetizer", 
+            "game day food", "bold flavors", "sweet heat", 
+            "cultural fusion", "exotic flavors", "finger-licking good"
+        ]
+    },
+    {
+        "title": "Teriyaki Wings",
+        "description": "Chicken wings glazed in a sweet and savory teriyaki sauce, garnished with sesame seeds and green onions. A mild, Asian-inspired favorite with a sticky, umami flavor profile.",
+        "tags": [
+            "teriyaki wings", "sweet and savory", "Asian-inspired", 
+            "chicken wings", "sticky glaze", "sesame seeds", 
+            "green onions", "comfort food", "handheld food", 
+            "meat lovers", "popular choice", "Japanese flavors", 
+            "appetizer", "game day snack", "mild flavor", 
+            "crispy", "umami taste", "crowd-pleaser"
+        ]
+    },
+    {
+        "title": "Jerk Chicken Wings",
+        "description": "Spicy Jamaican jerk wings marinated in a blend of scotch bonnet peppers, allspice, and other island spices, grilled to perfection. Great for lovers of smoky, fiery Caribbean flavors.",
+        "tags": [
+            "jerk chicken wings", "spicy", "Jamaican cuisine", 
+            "Caribbean flavors", "scotch bonnet", "grilled", 
+            "island spices", "meat lovers", "handheld food", 
+            "bold flavors", "cultural cuisine", "smoky flavor", 
+            "crispy", "authentic taste", "appetizer", 
+            "unique flavors", "heat lovers", "exotic spice blend"
+        ]
+    },
+    {
+        "title": "Maple Sriracha Wings",
+        "description": "A mix of sweet maple syrup and spicy sriracha coating crispy chicken wings. Perfect for fans of sweet and spicy combinations looking for a balanced yet flavorful bite.",
+        "tags": [
+            "maple sriracha wings", "sweet and spicy", "unique flavor", 
+            "chicken wings", "crispy", "bold flavors", 
+            "meat lovers", "game day snack", "appetizer", 
+            "handheld food", "fusion cuisine", "sticky glaze", 
+            "popular choice", "sweet heat", "finger food", 
+            "crowd favorite", "comfort food", "crispy exterior"
+        ]
+    },
+    {
+        "title": "Buffalo Ranch Wings",
+        "description": "Chicken wings tossed in a mix of buffalo and ranch seasoning, offering a creamy, tangy twist on the classic buffalo wing. Ideal for fans of both spicy and creamy flavors.",
+        "tags": [
+            "buffalo ranch wings", "creamy and tangy", "spicy", 
+            "chicken wings", "ranch seasoning", "crispy", 
+            "bold flavors", "comfort food", "handheld food", 
+            "game day snack", "bar food", "popular choice", 
+            "meat lovers", "fusion flavor", "appetizer", 
+            "unique twist", "American cuisine", "classic flavors"
+        ]
+    }
+]

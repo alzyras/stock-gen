@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*/__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+.Python
+env/
+.venv
+venv
+poetry.lock
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+.cache
+coverage.xml
+
+# Pycharm
+.idea
+
+# VS Code
+.vscode/
+
+# Jupyter NB Checkpoints
+.ipynb_checkpoints/
+
+# Mac OS-specific storage files
+.DS_Store
+
+# Caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.neptune/
+/cache/*
+!/cache/.gitkeep
+
+# Personal files
+credentials.json
+.env
+
+hf_cache
+models
+realesrgan-ncnn-vulkan
+RealESRGAN_x2plus.pth
+RealESRGAN_x4plus.pth
+store/generated_images
+store/adobe_home_json/used/
+astronaut_rides_horse.png

@@ -1,0 +1,6 @@
+{
+    "category": 8,
+    "negative_prompt": "Exclude blurriness, busy or cluttered backgrounds, cluttered spaces, poor or uneven lighting, out-of-focus elements, dissonant or overly bright color schemes, visible damage or signs of wear, irrelevant objects, inconsistent styling, exposure issues (both overexposed and underexposed areas), harsh or unpleasant textures, misaligned elements, empty or underutilized areas, and signs of degradation.",
+    "width": 1024,
+    "height": 1024
+  }

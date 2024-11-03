@@ -1,0 +1,110 @@
+[
+    {
+        "title": "Zesty Shrimp Ceviche",
+        "description": "A refreshing shrimp ceviche marinated in zesty lime juice, mixed with diced tomatoes, onions, and fresh cilantro. Garnished with avocado slices and served chilled, this vibrant dish brings coastal flavors to life.",
+        "tags": [
+            "shrimp ceviche", "seafood appetizer", "lime marinade", 
+            "fresh cilantro", "avocado garnish", "coastal flavors", 
+            "chilled seafood", "light and refreshing", "healthy dish", 
+            "party food", "Latin cuisine", "summertime snacks", 
+            "seafood lovers", "colorful dish", "culinary freshness", 
+            "food presentation", "easy appetizers", "gourmet touch"
+        ]
+    },
+    {
+        "title": "Grilled Tuna Steak with Citrus Salsa",
+        "description": "A perfectly grilled tuna steak topped with a tangy citrus salsa made from oranges, lime, and fresh herbs. This dish is balanced and full of bright flavors, perfect for a satisfying meal.",
+        "tags": [
+            "grilled tuna", "tuna steak", "citrus salsa", 
+            "seafood dinner", "healthy proteins", "zesty flavors", 
+            "gourmet seafood", "easy meal", "balanced dish", 
+            "fresh herbs", "dinner ideas", "cooking techniques", 
+            "summer flavors", "health-conscious meal", "light cuisine", 
+            "food artistry", "nutritious dinner", "dining experience"
+        ]
+    },
+    {
+        "title": "Classic Lobster Bisque",
+        "description": "A rich, creamy lobster bisque that combines smooth textures with the intense flavors of fresh lobster, sherry, and herbs. This luxurious soup is perfect for a special occasion or elegant dinner.",
+        "tags": [
+            "lobster bisque", "seafood soup", "creamy texture", 
+            "rich flavors", "luxury dish", "sherry", 
+            "fine dining", "elegant presentation", "gourmet cooking", 
+            "soup recipes", "special occasion", "comfort food", 
+            "culinary experience", "seafood lovers", "French cuisine", 
+            "dinner party", "food artistry", "winter warmer"
+        ]
+    },
+    {
+        "title": "Smoked Salmon Platter with Dill Cream",
+        "description": "A beautifully arranged smoked salmon platter accompanied by a dill cream sauce, capers, red onions, and lemon wedges. Served with toasted baguette slices, this dish is perfect for brunch or a light appetizer.",
+        "tags": [
+            "smoked salmon", "brunch ideas", "dill cream sauce", 
+            "seafood platter", "capers", "elegant appetizer", 
+            "lemon garnish", "baguette slices", "fresh herbs", 
+            "luxury brunch", "seafood cuisine", "colorful presentation", 
+            "food pairing", "party food", "culinary styling", 
+            "cold appetizers", "visual feast", "seafood delicacy"
+        ]
+    },
+    {
+        "title": "Spicy Fish Tacos with Avocado Slaw",
+        "description": "Crispy battered fish fillets served in warm tortillas, topped with a zesty avocado slaw and a sprinkle of fresh cilantro. These tacos pack a flavorful punch and are perfect for seafood lovers.",
+        "tags": [
+            "fish tacos", "seafood tacos", "avocado slaw", 
+            "spicy flavors", "Mexican cuisine", "comfort food", 
+            "fresh cilantro", "taco night", "crispy fish", 
+            "gourmet street food", "party snacks", "handheld food", 
+            "summer meal", "seafood lovers", "taco toppings", 
+            "flavorful bites", "food photography", "culinary variety"
+        ]
+    },
+    {
+        "title": "Garlic Butter Scallops with Asparagus",
+        "description": "Succulent scallops seared in a garlic butter sauce, served with tender asparagus. This simple yet indulgent dish highlights the delicate flavors of fresh scallops and is perfect for a gourmet meal.",
+        "tags": [
+            "seared scallops", "garlic butter", "seafood elegance", 
+            "simple ingredients", "tender asparagus", "gourmet dish", 
+            "fine dining", "quick cooking", "luxury meal", 
+            "seafood lovers", "dinner ideas", "flavorful", 
+            "delicate flavors", "buttery texture", "healthy meal", 
+            "culinary finesse", "special occasion", "visual delight"
+        ]
+    },
+    {
+        "title": "Creamy Clam Chowder",
+        "description": "A hearty bowl of classic New England clam chowder, filled with tender clams, potatoes, and celery in a creamy broth. This comforting soup is garnished with parsley and served with oyster crackers.",
+        "tags": [
+            "clam chowder", "New England cuisine", "seafood soup", 
+            "creamy broth", "comfort food", "oyster crackers", 
+            "seafood lovers", "hearty meals", "winter warmer", 
+            "classic recipe", "culinary tradition", "home cooking", 
+            "potatoes", "savory flavors", "cozy dish", 
+            "cooking classics", "food culture", "herb garnish"
+        ]
+    },
+    {
+        "title": "Spaghetti alle Vongole",
+        "description": "A traditional Italian dish featuring spaghetti with fresh clams, garlic, and white wine, topped with parsley and a hint of red pepper flakes. This light yet flavorful pasta dish transports you to the Italian coast.",
+        "tags": [
+            "Italian cuisine", "spaghetti alle vongole", "clams", 
+            "seafood pasta", "white wine sauce", "garlic flavor", 
+            "fresh parsley", "Mediterranean flavors", "classic dish", 
+            "light cuisine", "Italian flavors", "coastal vibes", 
+            "gourmet pasta", "dinner ideas", "simple elegance", 
+            "culinary tradition", "food artistry", "savor the flavor"
+        ]
+    },
+    {
+        "title": "Pan-Seared Mahi-Mahi with Mango Salsa",
+        "description": "A tropical dish featuring pan-seared mahi-mahi fillets topped with a fresh mango salsa, adding a sweet and tangy flavor. Paired with a side of coconut rice, this dish is a delightful blend of tropical and savory flavors.",
+        "tags": [
+            "mahi-mahi", "pan-seared fish", "mango salsa", 
+            "tropical flavors", "coconut rice", "seafood dinner", 
+            "sweet and savory", "healthy meal", "summer dish", 
+            "light cuisine", "Caribbean vibes", "exotic flavors", 
+            "food aesthetics", "seafood lovers", "meal prep", 
+            "food styling", "culinary travel", "plate presentation"
+        ]
+    }
+]

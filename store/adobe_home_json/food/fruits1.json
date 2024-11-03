@@ -1,0 +1,122 @@
+[
+    {
+        "title": "Fresh Berry Medley",
+        "description": "A colorful mix of strawberries, blueberries, blackberries, and raspberries. Perfect for snacking, topping on yogurt, or adding a burst of antioxidants to your morning smoothie.",
+        "tags": [
+            "berry mix", "strawberries", "blueberries", 
+            "blackberries", "raspberries", "antioxidants", 
+            "healthy snack", "fruit assortment", "breakfast topping", 
+            "smoothie ingredients", "bright colors", "high fiber", 
+            "summer fruits", "low-calorie", "immune support", 
+            "vitamin C", "hydrating", "natural sweetness"
+        ]
+    },
+    {
+        "title": "Tropical Fruit Platter",
+        "description": "An exotic assortment of pineapple, mango, papaya, and kiwi, delivering a taste of the tropics with each bite. Refreshing, sweet, and full of vitamin C and A.",
+        "tags": [
+            "tropical fruits", "pineapple", "mango", 
+            "papaya", "kiwi", "exotic flavors", 
+            "fruit assortment", "vitamin-rich", "sweet and juicy", 
+            "summer snack", "refreshing", "vitamin C", 
+            "antioxidants", "hydrating", "immune support", 
+            "caribbean flavors", "colorful platter", "natural sugars"
+        ]
+    },
+    {
+        "title": "Citrus Delight",
+        "description": "A zesty mix of oranges, grapefruits, lemons, and limes, perfect for a refreshing snack or for adding zest to dishes. Packed with vitamin C and antioxidants.",
+        "tags": [
+            "citrus fruits", "oranges", "grapefruits", 
+            "lemons", "limes", "zesty", "refreshing", 
+            "vitamin C", "high antioxidants", "immune boosting", 
+            "fruit platter", "colorful", "hydrating", 
+            "bright flavors", "low-calorie", "tangy", 
+            "natural sweetness", "healthy snack", "summer fruits"
+        ]
+    },
+    {
+        "title": "Melon Medley",
+        "description": "A hydrating mix of watermelon, cantaloupe, and honeydew, known for their juicy, subtly sweet flavors. Perfect for summer or as a cooling snack.",
+        "tags": [
+            "melon assortment", "watermelon", "cantaloupe", 
+            "honeydew", "refreshing", "hydrating", 
+            "summer snack", "low-calorie", "high water content", 
+            "vitamin A", "sweet flavor", "light snack", 
+            "fruit platter", "colorful", "digestive support", 
+            "cooling", "healthy snack", "natural sweetness", "low sugar"
+        ]
+    },
+    {
+        "title": "Orchard Fresh Apples and Pears",
+        "description": "A crisp selection of apples and pears, ideal for snacking, baking, or adding crunch to salads. Rich in fiber, vitamin C, and heart-healthy nutrients.",
+        "tags": [
+            "apples and pears", "orchard fruits", "crisp flavor", 
+            "high fiber", "vitamin C", "heart-healthy", 
+            "fall fruits", "low calorie", "crunchy texture", 
+            "baking", "snack", "immune support", 
+            "hydrating", "antioxidants", "fruit platter", 
+            "easy to carry", "portable snack", "school snack", "natural sweetness"
+        ]
+    },
+    {
+        "title": "Stone Fruit Sampler",
+        "description": "A juicy variety of peaches, plums, nectarines, and cherries, perfect for summertime treats or baking. Packed with fiber and antioxidants for overall wellness.",
+        "tags": [
+            "stone fruits", "peaches", "plums", 
+            "nectarines", "cherries", "high fiber", 
+            "summer fruits", "antioxidants", "baking", 
+            "juicy flavor", "fruit platter", "healthy snack", 
+            "natural sweetness", "vitamin C", "hydrating", 
+            "low calorie", "immune boosting", "colorful assortment", "unique textures"
+        ]
+    },
+    {
+        "title": "Grapes and Berry Bounty",
+        "description": "A perfect mix of green and red grapes with assorted berries, ideal for picnics, charcuterie boards, or a quick sweet snack. Full of antioxidants and vitamins.",
+        "tags": [
+            "grapes and berries", "green grapes", "red grapes", 
+            "berries", "picnic food", "sweet snack", 
+            "antioxidants", "fiber-rich", "vitamin C", 
+            "immune boosting", "fruit platter", "charcuterie pairing", 
+            "low calorie", "hydrating", "natural sweetness", 
+            "colorful", "easy to eat", "refreshing flavor", "bite-sized"
+        ]
+    },
+    {
+        "title": "Exotic Fruit Basket",
+        "description": "An adventurous mix of dragon fruit, lychee, passionfruit, and starfruit. A treat for those looking to try unique textures and flavors from around the world.",
+        "tags": [
+            "exotic fruits", "dragon fruit", "lychee", 
+            "passionfruit", "starfruit", "unique textures", 
+            "tropical", "high antioxidants", "vitamin-rich", 
+            "immune boosting", "fruit basket", "bold flavors", 
+            "colorful", "sweet and tangy", "adventurous flavors", 
+            "natural sugars", "hydrating", "immunity support", "cultural cuisine"
+        ]
+    },
+    {
+        "title": "Mixed Berry and Citrus Salad",
+        "description": "A refreshing salad made of blueberries, strawberries, and oranges, tossed with a hint of mint. Perfect as a light dessert or healthy snack.",
+        "tags": [
+            "berry and citrus salad", "blueberries", "strawberries", 
+            "oranges", "refreshing", "light snack", 
+            "fruit salad", "vitamin C", "antioxidants", 
+            "immune boosting", "natural sweetness", "low calorie", 
+            "hydrating", "summertime", "minty twist", 
+            "healthy dessert", "colorful", "easy to make", "fiber-rich"
+        ]
+    },
+    {
+        "title": "Autumn Harvest Assortment",
+        "description": "A seasonal mix of apples, pears, pomegranates, and cranberries, ideal for autumn snacking or festive gatherings. High in fiber and antioxidants, with a touch of seasonal spice.",
+        "tags": [
+            "autumn fruits", "apples", "pears", 
+            "pomegranates", "cranberries", "fall flavors", 
+            "high fiber", "antioxidants", "festive", 
+            "seasonal platter", "fruit assortment", "immune support", 
+            "holiday snack", "natural sweetness", "heart-healthy", 
+            "low calorie", "bright color", "seasonal produce", "rich flavors"
+        ]
+    }
+]

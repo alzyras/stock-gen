@@ -1,0 +1,6 @@
+{
+    "category": 12,
+    "negative_prompt": "Exclude blurriness, distracting background elements, cluttered spaces, poor lighting, out-of-focus objects, unappealing color combinations, damaged items, irrelevant objects, inconsistent styles, overexposed or underexposed areas, unpleasant textures, misaligned items, empty spaces, and signs of wear and tear.",
+    "width": 1024,
+    "height": 1024
+  }

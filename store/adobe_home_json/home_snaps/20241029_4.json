@@ -1,0 +1,122 @@
+[
+    {
+        "title": "Industrial Chic with Raw Materials and Vintage Charm",
+        "description": "A stylish industrial chic living room showcasing raw materials like exposed brick and steel beams. Vintage furniture pieces and bold lighting add warmth and character to the urban-inspired space.",
+        "tags": [
+            "industrial chic", "raw materials", "exposed brick", 
+            "steel beams", "vintage charm", "bold lighting", 
+            "urban design", "stylish decor", "modern rustic", 
+            "eclectic elements", "warm ambiance", "contemporary art", 
+            "functional beauty", "open layout", "creative workspace", 
+            "high ceilings", "casual elegance", "retro influences"
+        ]
+    },
+    {
+        "title": "Coastal Retreat with Sea-Inspired Colors and Natural Light",
+        "description": "A serene coastal retreat living room filled with sea-inspired colors, soft textiles, and abundant natural light. Nautical decor and airy furnishings create a relaxing atmosphere reminiscent of beachside getaways.",
+        "tags": [
+            "coastal retreat", "sea-inspired colors", "natural light", 
+            "nautical decor", "airy furnishings", "relaxing atmosphere", 
+            "beachside vibes", "fresh decor", "light and breezy", 
+            "marine influences", "ocean hues", "casual elegance", 
+            "serene ambiance", "vacation feel", "laid-back lifestyle", 
+            "outdoor elements", "refreshing style", "tranquil living"
+        ]
+    },
+    {
+        "title": "Romantic Parisian Apartment with Antique Elegance",
+        "description": "An enchanting Parisian apartment living room featuring antique furnishings, soft pastel colors, and intricate moldings. Elegant drapes and vintage artwork create a dreamy atmosphere of sophistication and charm.",
+        "tags": [
+            "Parisian apartment", "antique elegance", "soft pastels", 
+            "intricate moldings", "vintage artwork", "sophisticated style", 
+            "dreamy atmosphere", "elegant drapes", "romantic decor", 
+            "historical charm", "opulent details", "feminine touches", 
+            "classic aesthetics", "charming accents", "luxurious feel", 
+            "timeless beauty", "city of lights", "cultural richness"
+        ]
+    },
+    {
+        "title": "Funky Bohemian Lounge with Colorful Textiles and Eclectic Decor",
+        "description": "A vibrant bohemian lounge brimming with colorful textiles, eclectic decor, and an array of patterns. Floor cushions, hanging plants, and artistic elements create a lively and inviting space for relaxation.",
+        "tags": [
+            "bohemian lounge", "colorful textiles", "eclectic decor", 
+            "patterns galore", "floor cushions", "hanging plants", 
+            "vibrant atmosphere", "artistic elements", "playful design", 
+            "creative expression", "free-spirited", "relaxed vibe", 
+            "cultural influences", "global decor", "whimsical touches", 
+            "cozy corners", "inviting energy", "artsy sanctuary"
+        ]
+    },
+    {
+        "title": "Smart Tech Haven with Interactive Elements and Sleek Design",
+        "description": "A futuristic smart tech living room featuring interactive elements, sleek design, and integrated technology. Minimalist furniture and modern gadgets create a seamless living space that enhances everyday convenience.",
+        "tags": [
+            "smart tech", "interactive elements", "sleek design", 
+            "integrated technology", "minimalist furniture", "futuristic style", 
+            "convenient living", "modern gadgets", "innovative decor", 
+            "high-tech ambiance", "functional design", "user-friendly", 
+            "digital lifestyle", "clean lines", "space-saving", 
+            "tech-savvy", "urban innovation", "elegant simplicity"
+        ]
+    },
+    {
+        "title": "Mid-Century Modern with Retro Furniture and Clean Lines",
+        "description": "A stylish mid-century modern living room showcasing retro furniture pieces, clean lines, and a muted color palette. Iconic designs and minimalist decor create a timeless space that celebrates vintage aesthetics.",
+        "tags": [
+            "mid-century modern", "retro furniture", "clean lines", 
+            "muted colors", "iconic designs", "timeless style", 
+            "vintage aesthetics", "minimalist decor", "stylish comfort", 
+            "functionality", "warm woods", "contemporary influences", 
+            "open space", "classic modernism", "chic ambiance", 
+            "curated collection", "artistic simplicity", "elegant function"
+        ]
+    },
+    {
+        "title": "Luxury Escape with Marble Accents and Upscale Furnishings",
+        "description": "An opulent luxury living room adorned with marble accents, upscale furnishings, and lavish decor. A sophisticated color scheme and exquisite details create an indulgent atmosphere for relaxation and entertainment.",
+        "tags": [
+            "luxury escape", "marble accents", "upscale furnishings", 
+            "lavish decor", "sophisticated colors", "exquisite details", 
+            "indulgent atmosphere", "refined elegance", "high-end design", 
+            "chic decor", "rich textures", "glamorous living", 
+            "stylish sophistication", "elegant entertainment", "opulent lifestyle", 
+            "formal ambiance", "affluent aesthetics", "palatial vibes"
+        ]
+    },
+    {
+        "title": "Nature-Inspired Sanctuary with Earthy Tones and Biophilic Design",
+        "description": "A calming nature-inspired living room featuring earthy tones, biophilic design, and organic shapes. Natural materials and abundant greenery create a sanctuary that promotes well-being and connection to nature.",
+        "tags": [
+            "nature-inspired", "earthy tones", "biophilic design", 
+            "organic shapes", "natural materials", "abundant greenery", 
+            "calming atmosphere", "well-being", "connection to nature", 
+            "eco-friendly decor", "sustainable living", "refreshing vibe", 
+            "serene environment", "relaxed elegance", "mindful design", 
+            "natural textures", "holistic approach", "wholesome living"
+        ]
+    },
+    {
+        "title": "Classic English Library with Rich Wood and Cozy Nooks",
+        "description": "An elegant classic English library adorned with rich wood paneling, plush seating, and cozy reading nooks. Antique bookshelves and warm lighting create a sophisticated atmosphere perfect for literary enthusiasts.",
+        "tags": [
+            "classic English library", "rich wood", "cozy nooks", 
+            "plush seating", "antique bookshelves", "warm lighting", 
+            "sophisticated atmosphere", "literary haven", "elegant design", 
+            "traditional charm", "inviting space", "timeless decor", 
+            "knowledge sanctuary", "refined taste", "cultured ambiance", 
+            "intellectual retreat", "luxurious comfort", "book lover's dream"
+        ]
+    },
+    {
+        "title": "Artistic Zen Space with Minimalist Decor and Calm Palette",
+        "description": "A serene artistic zen space featuring minimalist decor and a calm color palette. Thoughtfully placed art pieces and natural light create an inspiring environment for creativity and reflection.",
+        "tags": [
+            "artistic zen space", "minimalist decor", "calm palette", 
+            "serene atmosphere", "thoughtfully placed art", "natural light", 
+            "inspiring environment", "creativity", "reflection", 
+            "peaceful decor", "tranquil living", "conscious design", 
+            "meditative space", "aesthetic harmony", "spiritual retreat", 
+            "gentle inspiration", "balanced living", "soothing vibes"
+        ]
+    }
+]

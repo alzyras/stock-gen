@@ -1,0 +1,6 @@
+{
+    "category": 7,
+    "negative_prompt": "distortion, artifacts, blurry, overexposed, underexposed, low contrast, high contrast, grainy, noisy, out of focus, low resolution, over saturated, under saturated, unnatural colors, lens flare, chromatic aberration, vignette, motion blur, pixelated, compression artifacts",
+    "width": 1680,
+    "height": 720
+}

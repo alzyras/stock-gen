@@ -1,0 +1,98 @@
+[
+    {
+        "title": "Korean BBQ Short Ribs (Galbi)",
+        "description": "Marinated Korean-style short ribs grilled to perfection, with a sweet and savory sauce infused with soy, garlic, and sesame. A popular choice for meat lovers looking for bold Asian flavors.",
+        "tags": [
+            "Korean BBQ", "short ribs", "Galbi", 
+            "soy marinade", "garlic", "Asian cuisine", 
+            "meat lovers", "grilled meat", "sweet and savory", 
+            "sesame flavor", "marinated ribs", "char-grilled", 
+            "bold flavors", "Korean flavors", "cultural cuisine", 
+            "outdoor grilling", "succulent meat", "authentic taste"
+        ]
+    },
+    {
+        "title": "Smoked Brisket with BBQ Rub",
+        "description": "Slow-smoked beef brisket seasoned with a homemade BBQ rub. Tender, juicy, and bursting with smoky flavor, this brisket is ideal for BBQ enthusiasts and pairs well with baked beans and coleslaw.",
+        "tags": [
+            "smoked brisket", "BBQ rub", "slow-cooked", 
+            "tender meat", "barbecue", "smoky flavor", 
+            "meat lovers", "hearty meal", "baked beans", 
+            "classic BBQ", "comfort food", "American cuisine", 
+            "backyard BBQ", "juicy beef", "soul food", 
+            "weekend cooking", "flavorful rub", "low and slow"
+        ]
+    },
+    {
+        "title": "Italian Sausage Lasagna",
+        "description": "Layered with Italian sausage, ricotta cheese, marinara sauce, and mozzarella, this hearty lasagna is a meat-filled twist on a classic Italian favorite. Perfect for family dinners or special gatherings.",
+        "tags": [
+            "lasagna", "Italian sausage", "marinara sauce", 
+            "ricotta cheese", "comfort food", "hearty meal", 
+            "Italian cuisine", "meat lovers", "mozzarella", 
+            "pasta lovers", "family dinner", "baked pasta", 
+            "classic recipe", "oven-baked", "savory layers", 
+            "traditional Italian", "cheesy goodness", "crowd favorite"
+        ]
+    },
+    {
+        "title": "Spicy Jerk Chicken",
+        "description": "Jamaican-style jerk chicken marinated in a blend of spices, grilled for a smoky finish, and served with rice and beans. This dish offers a perfect balance of spice, heat, and Caribbean flavors.",
+        "tags": [
+            "jerk chicken", "Jamaican cuisine", "Caribbean flavors", 
+            "spicy chicken", "grilled", "smoky finish", 
+            "meat lovers", "bold spices", "authentic flavor", 
+            "rice and beans", "island flavors", "marinated meat", 
+            "heat lovers", "summer grilling", "traditional dish", 
+            "cultural cuisine", "tropical taste", "flavor-packed"
+        ]
+    },
+    {
+        "title": "Lamb Shawarma with Yogurt Sauce",
+        "description": "Thinly sliced, marinated lamb wrapped in pita with fresh vegetables and a creamy yogurt sauce. A Middle Eastern classic that offers rich, spiced flavors and is perfect for handheld enjoyment.",
+        "tags": [
+            "lamb shawarma", "Middle Eastern cuisine", "pita wrap", 
+            "marinated lamb", "yogurt sauce", "handheld food", 
+            "spiced flavors", "street food", "authentic taste", 
+            "fresh vegetables", "cultural flavors", "hearty wrap", 
+            "comfort food", "meat lovers", "Mediterranean influence", 
+            "flavorful meat", "quick bite", "classic recipe"
+        ]
+    },
+    {
+        "title": "Filet Mignon with Red Wine Reduction",
+        "description": "Tender filet mignon seared to perfection and drizzled with a rich red wine reduction. A gourmet meal that highlights the delicate flavors of high-quality beef, perfect for a fine dining experience.",
+        "tags": [
+            "filet mignon", "red wine reduction", "fine dining", 
+            "gourmet meal", "tender beef", "luxury dish", 
+            "meat lovers", "seared steak", "rich flavors", 
+            "steak lovers", "elegant presentation", "culinary experience", 
+            "high-quality beef", "classic recipe", "succulent meat", 
+            "dinner party", "refined taste", "French cuisine"
+        ]
+    },
+    {
+        "title": "Classic Meatloaf with Mashed Potatoes",
+        "description": "Traditional meatloaf made with a blend of ground beef, spices, and a ketchup glaze. Paired with creamy mashed potatoes, this dish is the ultimate comfort food for cozy dinners.",
+        "tags": [
+            "meatloaf", "ground beef", "ketchup glaze", 
+            "comfort food", "mashed potatoes", "classic dinner", 
+            "hearty meal", "meat lovers", "homemade", 
+            "American cuisine", "family dinner", "traditional recipe", 
+            "creamy side", "soul food", "baked dish", 
+            "simple flavors", "oven-baked", "cozy meal"
+        ]
+    },
+    {
+        "title": "Pork Schnitzel with Lemon and Dill",
+        "description": "Crispy, breaded pork schnitzel topped with a squeeze of fresh lemon and dill. A German-inspired favorite, this dish offers a satisfying crunch and tangy flavors for an authentic European experience.",
+        "tags": [
+            "pork schnitzel", "German cuisine", "breaded pork", 
+            "crispy", "lemon garnish", "dill", 
+            "European flavors", "meat lovers", "tangy taste", 
+            "comfort food", "authentic experience", "crunchy texture", 
+            "traditional recipe", "hearty meal", "fried food", 
+            "family favorite", "culinary classic", "simple but tasty"
+        ]
+    }
+]

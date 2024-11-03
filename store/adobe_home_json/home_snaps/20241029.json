@@ -1,0 +1,102 @@
+[
+    {
+        "title": "Zen Garden Living Room with Minimalist Japanese Aesthetics",
+        "description": "This calming living room combines natural wood tones and clean lines with a low, minimalist sofa. The space includes a traditional shoji screen divider and a bonsai centerpiece on a natural stone coffee table. Muted earth tones and soft lighting create a tranquil environment, blending Japanese elegance with a modern touch.",
+        "tags": [
+            "zen garden style", "Japanese aesthetics", "natural wood", 
+            "shoji screen", "bonsai decor", "earth tones", 
+            "tranquil atmosphere", "minimalist design", "stone coffee table",
+            "serene environment", "Japanese decor", "modern zen style"
+        ]
+    },
+    {
+        "title": "Mid-Century Modern Den with Retro Vibes and Color Pop",
+        "description": "A cozy den filled with mid-century modern character, featuring a teal velvet sofa, vintage wooden coffee table, and playful pops of color from retro cushions. Starburst wall clocks and geometric patterns bring out a retro charm, while pendant lamps with exposed filament bulbs provide warm lighting.",
+        "tags": [
+            "mid-century modern", "retro vibes", "teal velvet sofa", 
+            "vintage furniture", "colorful cushions", "starburst clock", 
+            "geometric patterns", "exposed filament lighting", "warm atmosphere", 
+            "cozy den", "retro decor", "playful color"
+        ]
+    },
+    {
+        "title": "Tropical Boho Paradise with Rattan Furniture and Lush Greenery",
+        "description": "Step into a lush, tropical-inspired living room with rattan furniture and large, vibrant green plants. A mix of exotic-patterned cushions, bamboo lanterns, and a jute rug enhances the island vibe. Soft, ambient lighting gives this bohemian paradise a relaxing, resort-like feel.",
+        "tags": [
+            "tropical paradise", "boho decor", "rattan furniture", 
+            "lush greenery", "exotic patterns", "bamboo lighting", 
+            "jute rug", "resort vibes", "island style", 
+            "bohemian ambiance", "soft lighting", "natural decor"
+        ]
+    },
+    {
+        "title": "Art Deco Living Space with Gold Accents and Glamorous Details",
+        "description": "An opulent art deco-inspired living room featuring plush velvet seating in emerald green and striking gold accents throughout. Mirrors with geometric frames and a glass coffee table bring sophistication, while a chandelier with cascading crystals adds to the glamorous, old-Hollywood atmosphere.",
+        "tags": [
+            "art deco style", "gold accents", "emerald green velvet", 
+            "geometric mirrors", "glass coffee table", "crystal chandelier", 
+            "old-Hollywood glam", "plush seating", "luxurious details", 
+            "sophisticated decor", "opulent ambiance", "vintage charm"
+        ]
+    },
+    {
+        "title": "High-Tech Minimalist Lounge with Smart Features and Clean Lines",
+        "description": "A futuristic living room designed with a minimalist approach, featuring sleek white furniture, recessed smart lighting, and a wall-mounted OLED TV. The room includes an automated blinds system and voice-activated controls, bringing a high-tech edge to the ultra-clean design.",
+        "tags": [
+            "high-tech lounge", "minimalist decor", "smart home features", 
+            "clean lines", "sleek white furniture", "recessed lighting", 
+            "OLED TV", "automated blinds", "voice-activated controls", 
+            "modern technology", "futuristic style", "ultra-modern ambiance"
+        ]
+    },
+    {
+        "title": "Rustic Farmhouse Charm with Vintage Accents and Cozy Warmth",
+        "description": "This warm and inviting farmhouse living room is decorated with reclaimed wood furniture, a vintage iron chandelier, and a plaid wool rug. Large windows bring in natural light, and a fireplace adds warmth. The walls are adorned with framed family photos, bringing a touch of nostalgia to this rustic retreat.",
+        "tags": [
+            "rustic farmhouse", "vintage charm", "reclaimed wood", 
+            "iron chandelier", "plaid wool rug", "natural lighting", 
+            "fireplace warmth", "family photos", "nostalgic decor", 
+            "country style", "cozy retreat", "inviting atmosphere"
+        ]
+    },
+    {
+        "title": "Urban Jungle Living Room with Concrete Walls and Abundant Plants",
+        "description": "An urban oasis filled with greenery and industrial touches, featuring exposed concrete walls, a dark leather sofa, and an abundance of plants. Industrial shelves hold planters, while a wooden coffee table with metal legs adds a raw aesthetic to this trendy, urban jungle.",
+        "tags": [
+            "urban jungle", "concrete walls", "industrial decor", 
+            "leather sofa", "abundant plants", "planter shelves", 
+            "raw aesthetic", "trendy vibe", "urban oasis", 
+            "natural elements", "greenery", "industrial chic"
+        ]
+    },
+    {
+        "title": "Vintage French Country Cottage with Soft Pastels and Antique Décor",
+        "description": "This French country-inspired cottage living room embraces soft pastel hues and antique furniture. The space is adorned with a distressed wooden coffee table, lace curtains, and a delicate chandelier. Vintage floral patterns and an antique mirror complete the charming, romantic vibe.",
+        "tags": [
+            "French country cottage", "soft pastels", "antique furniture", 
+            "distressed wood", "lace curtains", "delicate chandelier", 
+            "vintage floral patterns", "romantic charm", "antique mirror", 
+            "cottage style", "elegant decor", "classic appeal"
+        ]
+    },
+    {
+        "title": "Scandinavian Hygge Retreat with Cozy Textiles and Warm Lighting",
+        "description": "A cozy Scandinavian-inspired living room that emphasizes warmth and comfort. Soft, woven blankets and pillows in neutral colors fill the sofa, while wooden accents and warm lighting create a welcoming hygge atmosphere. The space also includes a small fireplace for added coziness.",
+        "tags": [
+            "Scandinavian hygge", "cozy textiles", "neutral colors", 
+            "woven blankets", "warm lighting", "wooden accents", 
+            "small fireplace", "comfort-focused decor", "welcoming ambiance", 
+            "hygge style", "Nordic charm", "cozy living room"
+        ]
+    },
+    {
+        "title": "Mediterranean Villa with Terracotta Floors and Natural Stone Accents",
+        "description": "A Mediterranean-inspired living room that transports you to a coastal villa. Terracotta tile floors, white stucco walls, and natural stone accents define the space. Large arched windows let in plenty of sunlight, while rustic wooden furniture and pottery add warmth and character.",
+        "tags": [
+            "Mediterranean villa", "terracotta floors", "natural stone accents", 
+            "white stucco walls", "arched windows", "rustic furniture", 
+            "pottery decor", "sunlit space", "coastal charm", 
+            "warm character", "Mediterranean style", "villa ambiance"
+        ]
+    }
+]

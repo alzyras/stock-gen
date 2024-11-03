@@ -1,0 +1,123 @@
+[
+    {
+        "title": "Shrimp Cocktail",
+        "description": "Juicy shrimp served chilled with a tangy cocktail sauce. A classic appetizer that combines the sweetness of shrimp with a zesty kick.",
+        "tags": [
+            "shrimp", "cocktail", "appetizer", 
+            "seafood", "chilled", "zesty sauce", 
+            "fresh", "party food", "finger food", 
+            "low calorie", "high protein", "summertime", 
+            "shellfish", "classic dish", "quick prep", 
+            "tangy", "elegant", "seafood lovers"
+        ]
+    },
+    {
+        "title": "Grilled Salmon",
+        "description": "Tender salmon fillets grilled to perfection, seasoned with herbs and spices. Rich in omega-3 fatty acids, making it a healthy dinner option.",
+        "tags": [
+            "salmon", "grilled", "healthy", 
+            "omega-3", "seafood", "main course", 
+            "herb-seasoned", "protein-rich", "easy recipe", 
+            "weeknight dinner", "light meal", "fresh ingredients", 
+            "flaky texture", "flavorful", "delicious", 
+            "nutritious", "smoky flavor", "summer grilling"
+        ]
+    },
+    {
+        "title": "Lobster Roll",
+        "description": "Succulent lobster meat tossed in a light mayo dressing, served in a buttered bun. A New England classic that embodies summer by the sea.",
+        "tags": [
+            "lobster", "sandwich", "seafood", 
+            "new england", "summer food", "luxury", 
+            "light mayo", "buttered bun", "fresh lobster", 
+            "elegant", "gourmet", "beach food", 
+            "seafood lovers", "quick meal", "delicious", 
+            "rich flavor", "fresh ingredients", "satisfying"
+        ]
+    },
+    {
+        "title": "Seared Scallops",
+        "description": "Perfectly seared scallops with a golden crust, served with a citrus sauce. A gourmet dish that highlights the sweet flavor of scallops.",
+        "tags": [
+            "scallops", "seared", "gourmet", 
+            "seafood", "citrus sauce", "fine dining", 
+            "elegant", "sweet flavor", "restaurant-style", 
+            "quick cooking", "rich protein", "easy recipe", 
+            "impressive dish", "celebratory meal", "luxurious", 
+            "fresh seafood", "high-end", "tender"
+        ]
+    },
+    {
+        "title": "Fish Tacos",
+        "description": "Crispy battered fish in soft tortillas, topped with fresh salsa and avocado. A delicious and fun twist on traditional tacos.",
+        "tags": [
+            "fish", "tacos", "seafood", 
+            "battered", "salsa", "avocado", 
+            "street food", "quick meal", "flavorful", 
+            "fresh ingredients", "easy recipe", "summertime", 
+            "zesty", "light meal", "crispy", 
+            "casual dining", "party food", "filling"
+        ]
+    },
+    {
+        "title": "Clam Chowder",
+        "description": "Creamy and hearty clam chowder filled with tender clams, potatoes, and herbs. A comforting dish that's perfect for cold weather.",
+        "tags": [
+            "clam chowder", "soup", "seafood", 
+            "creamy", "hearty", "comfort food", 
+            "winter meal", "rich flavor", "classic dish", 
+            "new england", "tender clams", "homemade", 
+            "potatoes", "warm", "filling", 
+            "easy recipe", "traditional", "hearty bowl"
+        ]
+    },
+    {
+        "title": "Sushi Platter",
+        "description": "An assortment of fresh sushi rolls, nigiri, and sashimi. Perfect for sharing and enjoying a variety of flavors and textures.",
+        "tags": [
+            "sushi", "platter", "seafood", 
+            "fresh", "variety", "Japanese cuisine", 
+            "rolls", "nigiri", "sashimi", 
+            "party food", "colorful", "gourmet", 
+            "delicate flavors", "easy sharing", "healthy", 
+            "high protein", "rice", "seaweed", 
+            "umami", "artistic presentation", "sophisticated"
+        ]
+    },
+    {
+        "title": "Crab Cakes",
+        "description": "Golden brown crab cakes made with lump crab meat, herbs, and spices. Served with a tangy remoulade for an extra flavor kick.",
+        "tags": [
+            "crab cakes", "seafood", "appetizer", 
+            "lump crab meat", "golden brown", "tangy", 
+            "herbs", "spices", "party food", 
+            "elegant", "satisfying", "easy to make", 
+            "high protein", "comfort food", "quick meal", 
+            "southern cuisine", "delicious", "rich flavor"
+        ]
+    },
+    {
+        "title": "Oysters on the Half Shell",
+        "description": "Fresh oysters served on ice with a variety of sauces. A delicacy for seafood lovers that brings the taste of the ocean to your plate.",
+        "tags": [
+            "oysters", "seafood", "half shell", 
+            "fresh", "delicacy", "tasting experience", 
+            "ice", "variety of sauces", "shellfish", 
+            "luxurious", "gourmet", "high-end", 
+            "natural", "light snack", "impressive", 
+            "salty", "briny", "raw", "seafood lovers"
+        ]
+    },
+    {
+        "title": "Seafood Paella",
+        "description": "A vibrant Spanish dish featuring saffron-infused rice, mixed seafood, and vegetables. A flavorful one-pot meal perfect for sharing.",
+        "tags": [
+            "paella", "seafood", "Spanish cuisine", 
+            "saffron", "one-pot meal", "vibrant", 
+            "flavorful", "mixed seafood", "easy sharing", 
+            "celebratory meal", "hearty", "colorful", 
+            "traditional", "rice dish", "delicious", 
+            "festive", "rich flavors", "aromatic", "hearty"
+        ]
+    }
+]

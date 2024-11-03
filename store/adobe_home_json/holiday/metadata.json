@@ -1,0 +1,6 @@
+{
+    "category": 15,
+    "negative_prompt": "Exclude blurriness, unwanted artifacts, distracting objects, cluttered compositions, poor lighting, inconsistent color balance, misaligned decorations, signs of wear and tear, out-of-focus areas, overexposed or underexposed sections, irrelevant objects, unpleasant textures, chaotic backgrounds, and any elements that detract from the festive atmosphere.",
+    "width": 1024,
+    "height": 1024
+}
