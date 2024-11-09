@@ -18,6 +18,7 @@ protobuf = "^5.28.3"
 sentencepiece = "^0.2.0"
 openai = "^1.54.3"
 pydantic = "^2.9.2"
+streamlit = "^1.40.0"
 
 
 
@@ -59,7 +60,12 @@ ignore = [
     "ANN003", # missing type annotation for kwarg
     "S101", # use of assert
     "INP001", # missing __init__.py in package
-    "SLF001", # access to a private member (for tests only)
+    "SLF001", # access to a private member (for tests only),
+    "D103", # missing docstring in public function (for obvious functions)
+    "FBT001", # bool use in arg
+    "FBT002", # default bool use in arg
+    "PLR0913", # too many arguments (ignored if default args are used)
+    "D101", # missing docstring in public class (for obvious classes)
 ]
 
 [tool.ruff.flake8-quotes]
