@@ -1,8 +1,6 @@
 import os
-from pathlib import Path
 
 from openai import OpenAI
-from PIL import Image
 from pydantic import BaseModel
 
 META_PROMPT = """
@@ -20,45 +18,36 @@ Each prompt should reflect your expertise in translating complex visual concepts
 """
 
 
-class PicturePrompt(BaseModel):
+class ImagePrompt(BaseModel):
+    """Data model for the parsed image prompt from OpenAI's Chat API.
+
+    Attributes:
+        title (str): The title of the image prompt.
+        description (str): The description of the image prompt.
+        tags (list[str]): Tags associated with the image prompt.
+        generation_prompt (str): The generation prompt for the image, must not exceed 256 characters.
+    """
+
     title: str
     description: str
     tags: list[str]
     generation_prompt: str
 
 
-class PictureData(PicturePrompt):
-    path: str
-    theme_prompt: str
-
-    def load_image(self) -> Image:
-        """Function to load the generated image."""
-        return Image.open(self.path)
-
-
 def get_picture_prompt(
     theme_prompt: str,
-    image_path: str | Path,
     client: OpenAI,
-) -> PictureData:
+) -> ImagePrompt:
     """Function which takes in a theme prompt and returns prepared picture prompt and additional metadata."""
-    picture_prompt = (
+    return (
         client.beta.chat.completions.parse(
             model=os.environ["OPENAI_MODEL"],
             messages=[
                 {"role": "system", "content": META_PROMPT},
                 {"role": "user", "content": theme_prompt},
             ],
-            response_format=PicturePrompt,
+            response_format=ImagePrompt,
         )
         .choices[0]
         .message.parsed
-    )
-    return PictureData(
-        title=picture_prompt.title,
-        description=picture_prompt.description,
-        tags=picture_prompt.tags,
-        generation_prompt=picture_prompt.generation_prompt,
-        path=str(image_path),
-        theme_prompt=theme_prompt,
     )

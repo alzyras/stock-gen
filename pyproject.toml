@@ -7,18 +7,18 @@ readme = "README.md"
 package-mode = true
 
 [tool.poetry.dependencies]
-python = "~3.10"
+python = "~3.12"
 diffusers = "^0.31.0"
-torch = "^2.5.0"
 transformers = "^4.46.0"
 accelerate = "^1.0.1"
-xformers = "^0.0.28.post2"
 safetensors = "^0.4.5"
 protobuf = "^5.28.3"
 sentencepiece = "^0.2.0"
 openai = "^1.54.3"
 pydantic = "^2.9.2"
 streamlit = "^1.40.0"
+xformers = "^0.0.28.post3"
+torch = "^2.5.1"
 
 
 

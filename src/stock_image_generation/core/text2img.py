@@ -5,14 +5,34 @@ from pathlib import Path
 import torch
 from diffusers import FluxPipeline
 from openai import OpenAI
+from PIL.Image import Image
+from pydantic import ConfigDict
 
 from stock_image_generation.core.prompt_generation import (
-    PictureData,
+    ImagePrompt,
     get_picture_prompt,
 )
 
 DEFAULT_MODEL = os.environ["IMAGE_MODEL"]
 IMAGE_STORE = os.environ["IMAGE_STORE"]
+
+
+class ImageData(ImagePrompt):
+    identifier: str
+    image: Image
+    path: str | None
+    theme_prompt: str
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    def save_image(self, path: str | Path | None = None) -> None:
+        """Save the image to the specified path."""
+        if path is None and self.path is not None:
+            path = self.path
+        else:
+            error_message = "Path not provided for saving the image."
+            raise ValueError(error_message)
+        self.image.save(path)
 
 
 class ImageGenerator:
@@ -42,16 +62,18 @@ class ImageGenerator:
     def generate_image(
         self,
         theme_prompt: str,
+        subfolder: str | None = None,
         guidance_scale: float = 0.0,
         height: int = 1024,
         width: int = 1024,
-        num_inference_steps: int = 3,
+        num_inference_steps: int = 1,
         max_sequence_length: int = 256,
-    ) -> PictureData:
+    ) -> ImageData:
         """Generates and saves an image based on the given prompt and settings.
 
         Args:
             theme_prompt (str): Text prompt to guide image generation.
+            subfolder (str): Subfolder to save the generated image.
             guidance_scale (float): Guidance scale to adjust adherence to the prompt.
             height (int): Height of the generated image in pixels.
             width (int): Width of the generated image in pixels.
@@ -61,20 +83,40 @@ class ImageGenerator:
         Returns:
             PictureData: Object containing the generated image metadata.
         """
-        image_metadata = self._prepare_image_metadata(theme_prompt)
-        result = self.pipe(
-            prompt=image_metadata.generation_prompt,
+        image_id, image_path, image_prompt = self._prepare_image_metadata(
+            theme_prompt,
+            subfolder,
+        )
+        image = self.pipe(
+            prompt=image_prompt.generate_prompt,
             guidance_scale=guidance_scale,
             height=height,
             width=width,
             num_inference_steps=num_inference_steps,
             max_sequence_length=max_sequence_length,
         ).images[0]
-        result.save(image_metadata.path)
-        return image_metadata
+        return ImageData(
+            identifier=image_id,
+            title=image_prompt.title,
+            description=image_prompt.description,
+            tags=image_prompt.tags,
+            generation_prompt=image_prompt.generation_prompt,
+            image=image,
+            path=str(image_path),
+            theme_prompt=theme_prompt,
+        )
 
-    def _prepare_image_metadata(self, theme_prompt: str) -> PictureData:
+    def _prepare_image_metadata(
+        self,
+        theme_prompt: str,
+        subfolder: str | None = None,
+    ) -> ImageData:
         """Function to prepare the image metadata based on the theme prompt."""
-        picture_id = str(uuid.uuid4())
-        picture_path = Path(IMAGE_STORE) / f"{picture_id}.png"
-        return get_picture_prompt(theme_prompt, picture_path, self.llm_client)
+        image_id = str(uuid.uuid4())
+        image_destination = (
+            Path(IMAGE_STORE) / subfolder if subfolder else Path(IMAGE_STORE)
+        )
+        image_destination.mkdir(parents=True, exist_ok=True)
+        image_path = image_destination / f"{image_id}.png"
+        image_prompt = get_picture_prompt(theme_prompt, self.llm_client)
+        return image_id, image_path, image_prompt

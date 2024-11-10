@@ -1,6 +1,6 @@
 import streamlit as st
 
-from stock_image_generation.core.text2img import ImageGenerator
+from stock_image_generation.core.text2img import ImageData, ImageGenerator
 
 
 @st.cache_resource
@@ -9,38 +9,96 @@ def load_image_generator() -> ImageGenerator:
     return ImageGenerator()
 
 
+def save_image_helper(image_data: ImageData, idx: int) -> None:
+    image_data.save_image()
+    st.success(f"Image {idx} saved successfully!")
+
+
 def main() -> None:
-    """Main function to run the Streamlit app."""
+    """Main function to run the Streamlit app to display generated images in a grid."""
     image_generator = load_image_generator()
     st.title("Image Generation App")
     st.write(
-        "Enter a description below, press 'Generate', and see the generated image.",
+        "Enter a description below, press 'Generate Images', and view the generated images.",
     )
 
     # Text input for the user to enter a description
     user_input = st.text_input("Enter description:")
 
-    # Initialize the session state to store the generated image
-    if "generated_image" not in st.session_state:
-        st.session_state.generated_image = None
+    # Initialize session state for generated images and number of images to generate
+    if "generated_images" not in st.session_state:
+        st.session_state.generated_images = []
+    if "images_to_generate" not in st.session_state:
+        st.session_state.images_to_generate = 3  # Default to generating 9 images
 
-    # Generate image when the button is pressed
-    if st.button("Generate Image"):
+    # Set the number of images to generate
+    images_to_generate = st.sidebar.slider(
+        "Number of images to generate:",
+        min_value=1,
+        max_value=30,
+    )
+    image_height = st.sidebar.number_input(
+        "Image height:",
+        min_value=256,
+        max_value=4096,
+        value=1024,
+    )
+    image_width = st.sidebar.number_input(
+        "Image width:",
+        min_value=256,
+        max_value=4096,
+        value=1024,
+    )
+    steps = st.sidebar.number_input(
+        "Number of inference steps:",
+        min_value=1,
+        max_value=64,
+        value=1,
+    )
+    image_subfolder = st.sidebar.text_input("Image subfolder (optional):")
+
+    # Generate images when the button is pressed
+    if st.button("Generate Images"):
         if user_input:
-            st.session_state.generated_image = image_generator.generate_image(
-                user_input,
-            )
-            st.success("Image generated successfully!")
-    else:
-        st.warning("Please enter a description to generate an image.")
+            st.session_state.generated_images = [
+                image_generator.generate_image(
+                    user_input,
+                    height=image_height,
+                    width=image_width,
+                    num_inference_steps=steps,
+                    subfolder=image_subfolder,
+                )
+                for _ in range(images_to_generate)
+            ]
+            st.success("Images generated successfully!")
+        else:
+            st.warning("Please enter a description to generate images.")
 
-    # Display the generated image
-    if st.session_state.generated_image:
-        st.image(
-            st.session_state.generated_image.load_image(),
-            caption="Generated Image",
-            use_column_width=True,
-        )
+    # Display images in rows of 3
+    if st.session_state.generated_images:
+        # Calculate number of rows based on the number of images
+        num_rows = (
+            len(st.session_state.generated_images) + 2
+        ) // 3  # Rounding up to ensure full row
+
+        for row in range(num_rows):
+            # Create columns for the row
+            cols = st.columns(3)
+            for col_idx in range(3):
+                idx = row * 3 + col_idx
+                if idx < len(st.session_state.generated_images):
+                    current_image = st.session_state.generated_images[idx]
+                    with cols[col_idx]:
+                        st.image(current_image.image, use_container_width=True)
+                        st.markdown(
+                            f"**{current_image.title}**  \n{current_image.description[:200]}",
+                        )
+                        st.button(
+                            f"Save Image {idx}",
+                            key=f"save_button_{idx}",
+                            on_click=save_image_helper,
+                            args=(current_image, idx),
+                        )
 
 
 if __name__ == "__main__":
