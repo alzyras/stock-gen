@@ -55,8 +55,20 @@ class ImageGenerator:
             cpu_offload (bool): Flag to enable CPU offloading for the model.
             precision (torch.dtype): Precision for the model, defaults to torch.float16.
         """
-        self.pipe = FluxPipeline.from_pretrained(model_name, torch_dtype=torch.bfloat16)
+        if torch.backends.mps.is_available():
+            self.pipe = FluxPipeline.from_pretrained(
+                model_name,
+                torch_dtype=torch.bfloat16,
+            ).to("mps")
+            cpu_offload = False
+        else:
+            self.pipe = FluxPipeline.from_pretrained(
+                model_name,
+                torch_dtype=torch.bfloat16,
+            )
+
         self.llm_client = OpenAI()
+
         if cpu_offload:
             self.pipe.enable_sequential_cpu_offload()
             self.pipe.vae.enable_slicing()

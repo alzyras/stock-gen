@@ -50,3 +50,6 @@ coverage.xml
 # Personal files
 credentials.json
 .env
+
+# Test scripts
+test*
