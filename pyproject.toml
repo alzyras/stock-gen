@@ -1,0 +1,88 @@
+[tool.poetry]
+name = "stock_image_generation"
+version = "0.1.0"
+description = "Example template for Python applications"
+authors = ["Marius Arlauskas"]
+readme = "README.md"
+package-mode = true
+
+[tool.poetry.dependencies]
+python = "~3.12"
+diffusers = "^0.31.0"
+transformers = "^4.46.0"
+accelerate = "^1.0.1"
+safetensors = "^0.4.5"
+protobuf = "^5.28.3"
+sentencepiece = "^0.2.0"
+openai = "^1.54.3"
+pydantic = "^2.9.2"
+streamlit = "^1.40.0"
+torch = "^2.5.1"
+
+
+
+[tool.poetry.group.development.dependencies]
+ruff = '^0.0.285'
+isort = '^5.12.0'
+black = '^23.7.0'
+pytest = "^8.2.2"
+python-dotenv = "^1.0.1"
+
+[tool.poetry.group.notebooks.dependencies]
+ipykernel = "^6.29.5"
+pickleshare = "^0.7.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# match black
+line-length = 88 # Same as Black
+target-version = "py310"
+pydocstyle.convention = "google"
+select = [
+    "ALL", # include all the rules, including new ones
+]
+ignore = [
+    "G004", # logging with f-strings
+    "E501", # line too long
+    "ANN101", # missing type annotation for self in method
+    "D104", # missing docstring in public package
+    "D100", # missing docstring in public module
+    "ANN101", # missing type annotation for self in method
+    "ANN102", # missing type annotation for cls in class method
+    "I001", # isort import order
+    "ANN401", # dynamic type annotations
+    "ANN002", # missing type annotation for args
+    "ANN003", # missing type annotation for kwarg
+    "S101", # use of assert
+    "INP001", # missing __init__.py in package
+    "SLF001", # access to a private member (for tests only),
+    "D103", # missing docstring in public function (for obvious functions)
+    "FBT001", # bool use in arg
+    "FBT002", # default bool use in arg
+    "PLR0913", # too many arguments (ignored if default args are used)
+    "D101", # missing docstring in public class (for obvious classes)
+]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = 'double'
+inline-quotes = 'double'
+multiline-quotes = 'double'
+
+[tool.black]
+line-length = 88
+skip-string-normalization = true
+
+[tool.isort] # Making isort compatible with black
+profile = 'black'
+multi_line_output = 3
+line_length = 88
+include_trailing_comma = true
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]

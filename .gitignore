@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*/__pycache__/
+*.py[cod]
+
+# Ignore all images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.ppm
+
+# Predownloaded models
+hf_cache/hub/
+
+# Distribution / packaging
+.Python
+env/
+.venv
+venv
+poetry.lock
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+.cache
+coverage.xml
+
+# Pycharm
+.idea
+
+# VS Code
+.vscode/
+
+# Jupyter NB Checkpoints
+.ipynb_checkpoints/
+
+# Mac OS-specific storage files
+.DS_Store
+
+# Caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.neptune/
+/cache/*
+!/cache/.gitkeep
+
+# Personal files
+credentials.json
+.env
+
+# Test scripts
+test*
+
+# Ignore everything in image_store
+image_store/*
+
+# But do not ignore .gitkeep
+!image_store/.gitkeep
