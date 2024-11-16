@@ -32,6 +32,7 @@ class ImagePrompt(BaseModel):
     description: str
     tags: list[str]
     generation_prompt: str
+    
 
 
 def get_picture_prompt(

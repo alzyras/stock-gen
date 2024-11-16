@@ -88,7 +88,7 @@ class ImageGenerator:
             subfolder,
         )
         image = self.pipe(
-            prompt=image_prompt.generate_prompt,
+            prompt=image_prompt.generation_prompt,
             guidance_scale=guidance_scale,
             height=height,
             width=width,

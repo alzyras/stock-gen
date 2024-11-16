@@ -9,9 +9,9 @@ def load_image_generator() -> ImageGenerator:
     return ImageGenerator()
 
 
-def save_image_helper(image_data: ImageData, idx: int) -> None:
+def save_image_helper(image_data: ImageData, identifier_helper: int) -> None:
     image_data.save_image()
-    st.success(f"Image {idx} saved successfully!")
+    st.success(f"Image {identifier_helper} saved successfully!")
 
 
 def main() -> None:
@@ -94,10 +94,10 @@ def main() -> None:
                             f"**{current_image.title}**  \n{current_image.description[:200]}",
                         )
                         st.button(
-                            f"Save Image {idx}",
+                            "Save Image",
                             key=f"save_button_{idx}",
                             on_click=save_image_helper,
-                            args=(current_image, idx),
+                            args=(current_image, f"{current_image.description[:20]}..."),
                         )
 
 
