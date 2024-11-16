@@ -1,3 +1,4 @@
+import logging
 import os
 import uuid
 from pathlib import Path
@@ -13,6 +14,8 @@ from stock_image_generation.core.prompt_generation import (
     get_picture_prompt,
 )
 
+LOGGER = logging.getLogger(__name__)
+
 DEFAULT_MODEL = os.environ["IMAGE_MODEL"]
 IMAGE_STORE = os.environ["IMAGE_STORE"]
 
@@ -27,12 +30,13 @@ class ImageData(ImagePrompt):
 
     def save_image(self, path: str | Path | None = None) -> None:
         """Save the image to the specified path."""
+        LOGGER.info(f"Saving image {self.identifier} to {path}")
         if path is None and self.path is not None:
             path = self.path
         else:
             error_message = "Path not provided for saving the image."
             raise ValueError(error_message)
-        self.image.save(path)
+        self.image.save(f"{path}/{self.identifier}.png")
 
 
 class ImageGenerator:
@@ -58,6 +62,7 @@ class ImageGenerator:
             self.pipe.vae.enable_slicing()
             self.pipe.vae.enable_tiling()
             self.pipe.to(precision)
+        LOGGER.info(f"Image generator initialized with model {model_name}")
 
     def generate_image(
         self,
@@ -95,6 +100,7 @@ class ImageGenerator:
             num_inference_steps=num_inference_steps,
             max_sequence_length=max_sequence_length,
         ).images[0]
+        LOGGER.info(f"Generated image {image_id}")
         return ImageData(
             identifier=image_id,
             title=image_prompt.title,
@@ -117,6 +123,6 @@ class ImageGenerator:
             Path(IMAGE_STORE) / subfolder if subfolder else Path(IMAGE_STORE)
         )
         image_destination.mkdir(parents=True, exist_ok=True)
-        image_path = image_destination / f"{image_id}.png"
         image_prompt = get_picture_prompt(theme_prompt, self.llm_client)
-        return image_id, image_path, image_prompt
+        LOGGER.info(f"Prepared image metadata for {image_id}")
+        return image_id, image_destination, image_prompt

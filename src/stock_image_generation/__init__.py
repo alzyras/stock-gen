@@ -1,9 +1,7 @@
 import logging
-import os
-
 
 LOGGER = logging.getLogger(__name__)
-os.environ["HF_HOME"] = "./hf_cache"
+
 
 def setup_logging() -> logging.Logger:
     """Set up logging configuration."""

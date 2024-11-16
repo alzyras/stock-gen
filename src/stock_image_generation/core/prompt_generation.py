@@ -1,7 +1,12 @@
+import logging
 import os
 
 from openai import OpenAI
 from pydantic import BaseModel
+
+from stock_image_generation.core.stock_categorizer import get_category
+
+LOGGER = logging.getLogger(__name__)
 
 META_PROMPT = """
 You are a skilled prompt creator for an advanced image generation system. Your task is to construct precise, vivid prompts that enable the AI to generate images with exceptional clarity, detail, and realism. Each prompt should convey a fully realized vision, capturing the intended subject, environment, and atmosphere with maximum specificity and depth.
@@ -32,7 +37,11 @@ class ImagePrompt(BaseModel):
     description: str
     tags: list[str]
     generation_prompt: str
-    
+    category: str | None = None
+
+    def get_categories(self, llm_client: OpenAI) -> list[str]:
+        """Extract the categories from the image prompt."""
+        self.category = get_category(self.generation_prompt, llm_client).categories
 
 
 def get_picture_prompt(
@@ -40,6 +49,7 @@ def get_picture_prompt(
     client: OpenAI,
 ) -> ImagePrompt:
     """Function which takes in a theme prompt and returns prepared picture prompt and additional metadata."""
+    LOGGER.info(f"Getting picture prompt for theme: {theme_prompt}")
     return (
         client.beta.chat.completions.parse(
             model=os.environ["OPENAI_MODEL"],

@@ -1,22 +1,31 @@
+from pathlib import Path
+
 import streamlit as st
 
 from stock_image_generation.core.text2img import ImageData, ImageGenerator
 
+MODELS = [
+    "black-forest-labs/FLUX.1-schnell",
+    "black-forest-labs/FLUX.1-dev",
+]
+
 
 @st.cache_resource
-def load_image_generator() -> ImageGenerator:
+def load_image_generator(model_name: str) -> ImageGenerator:
     """Function to load the ImageGenerator object."""
-    return ImageGenerator()
+    return ImageGenerator(model_name)
 
 
 def save_image_helper(image_data: ImageData, identifier_helper: int) -> None:
     image_data.save_image()
+    image_data.get_categories(st.session_state.image_generator.llm_client)
+    with Path(f"{image_data.path}/{image_data.identifier}.json").open("w") as f:
+        f.write(image_data.model_dump_json(exclude={"image"}))
     st.success(f"Image {identifier_helper} saved successfully!")
 
 
 def main() -> None:
     """Main function to run the Streamlit app to display generated images in a grid."""
-    image_generator = load_image_generator()
     st.title("Image Generation App")
     st.write(
         "Enter a description below, press 'Generate Images', and view the generated images.",
@@ -32,6 +41,13 @@ def main() -> None:
         st.session_state.images_to_generate = 3  # Default to generating 9 images
 
     # Set the number of images to generate
+    model = st.sidebar.selectbox(
+        "Model used for inference:",
+        MODELS,
+    )
+    if st.sidebar.button("Load Model"):
+        st.session_state.image_generator = load_image_generator(model)
+        st.success("Model loaded successfully!")
     images_to_generate = st.sidebar.slider(
         "Number of images to generate:",
         min_value=1,
@@ -61,7 +77,7 @@ def main() -> None:
     if st.button("Generate Images"):
         if user_input:
             st.session_state.generated_images = [
-                image_generator.generate_image(
+                st.session_state.image_generator.generate_image(
                     user_input,
                     height=image_height,
                     width=image_width,
@@ -97,7 +113,10 @@ def main() -> None:
                             "Save Image",
                             key=f"save_button_{idx}",
                             on_click=save_image_helper,
-                            args=(current_image, f"{current_image.description[:20]}..."),
+                            args=(
+                                current_image,
+                                f"{current_image.description[:20]}...",
+                            ),
                         )
 
 
