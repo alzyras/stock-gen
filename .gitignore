@@ -53,3 +53,9 @@ credentials.json
 
 # Test scripts
 test*
+
+# Ignore everything in image_store
+image_store/*
+
+# But do not ignore .gitkeep
+!image_store/.gitkeep
