@@ -41,6 +41,7 @@ class TaggedCategory(BaseModel):
         "Technology",
         "Transport",
         "Travel",
+        "No Category Found",
     ]
 
 

@@ -9,10 +9,7 @@ from openai import OpenAI
 from PIL.Image import Image
 from pydantic import ConfigDict
 
-from stock_image_generation.core.prompt_generation import (
-    ImagePrompt,
-    get_picture_prompt,
-)
+from stock_image_generation.core.prompt_generation import ImagePrompt, prepare_prompt
 
 LOGGER = logging.getLogger(__name__)
 
@@ -79,6 +76,7 @@ class ImageGenerator:
     def generate_image(
         self,
         theme_prompt: str,
+        enhance_prompt: bool = True,
         subfolder: str | None = None,
         guidance_scale: float = 0.0,
         height: int = 1024,
@@ -90,6 +88,7 @@ class ImageGenerator:
 
         Args:
             theme_prompt (str): Text prompt to guide image generation.
+            enhance_prompt (bool): Flag to enable enhanced prompt generation.
             subfolder (str): Subfolder to save the generated image.
             guidance_scale (float): Guidance scale to adjust adherence to the prompt.
             height (int): Height of the generated image in pixels.
@@ -102,6 +101,7 @@ class ImageGenerator:
         """
         image_id, image_path, image_prompt = self._prepare_image_metadata(
             theme_prompt,
+            enhance_prompt,
             subfolder,
         )
         image = self.pipe(
@@ -127,6 +127,7 @@ class ImageGenerator:
     def _prepare_image_metadata(
         self,
         theme_prompt: str,
+        enhance_prompt: bool,
         subfolder: str | None = None,
     ) -> ImageData:
         """Function to prepare the image metadata based on the theme prompt."""
@@ -135,6 +136,6 @@ class ImageGenerator:
             Path(IMAGE_STORE) / subfolder if subfolder else Path(IMAGE_STORE)
         )
         image_destination.mkdir(parents=True, exist_ok=True)
-        image_prompt = get_picture_prompt(theme_prompt, self.llm_client)
+        image_prompt = prepare_prompt(theme_prompt, self.llm_client, enhance_prompt)
         LOGGER.info(f"Prepared image metadata for {image_id}")
         return image_id, image_destination, image_prompt

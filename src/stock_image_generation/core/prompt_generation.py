@@ -44,12 +44,20 @@ class ImagePrompt(BaseModel):
         self.category = get_category(self.generation_prompt, llm_client).categories
 
 
-def get_picture_prompt(
+def prepare_prompt(
     theme_prompt: str,
     client: OpenAI,
+    enhance_prompt: bool = False,
 ) -> ImagePrompt:
     """Function which takes in a theme prompt and returns prepared picture prompt and additional metadata."""
     LOGGER.info(f"Getting picture prompt for theme: {theme_prompt}")
+    if not enhance_prompt:
+        return ImagePrompt(
+            title="",
+            description="",
+            tags=[],
+            generation_prompt=theme_prompt,
+        )
     return (
         client.beta.chat.completions.parse(
             model=os.environ["OPENAI_MODEL"],

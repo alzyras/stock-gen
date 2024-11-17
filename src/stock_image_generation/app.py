@@ -48,6 +48,12 @@ def main() -> None:
     if st.sidebar.button("Load Model"):
         st.session_state.image_generator = load_image_generator(model)
         st.success("Model loaded successfully!")
+    # Set the number of images to generate
+    enhance_prompt = st.sidebar.selectbox(
+        "Model used for inference:",  # True False, default True
+        (False, True),
+        index=1,
+    )
     images_to_generate = st.sidebar.slider(
         "Number of images to generate:",
         min_value=1,
@@ -83,6 +89,7 @@ def main() -> None:
                     width=image_width,
                     num_inference_steps=steps,
                     subfolder=image_subfolder,
+                    enhance_prompt=enhance_prompt,
                 )
                 for _ in range(images_to_generate)
             ]
