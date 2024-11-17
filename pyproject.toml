@@ -65,6 +65,8 @@ ignore = [
     "FBT002", # default bool use in arg
     "PLR0913", # too many arguments (ignored if default args are used)
     "D101", # missing docstring in public class (for obvious classes)
+    "TD003", # TODO task
+    "FIX002", # Resolve TODO NOW!!!
 ]
 
 [tool.ruff.flake8-quotes]
