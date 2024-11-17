@@ -28,7 +28,6 @@ def main() -> None:
         image_subfolder,
     ) = load_sidebar()
 
-    # Generate images when the button is pressed
     if st.button("Generate Images"):
         generate_images(
             user_input,
@@ -39,7 +38,6 @@ def main() -> None:
             enhance_prompt,
             images_to_generate,
         )
-    # Display images in rows of 3
     if st.session_state.generated_images:
         display_images_in_grid(st.session_state.generated_images)
 
