@@ -88,7 +88,9 @@ class CSVGenerator:
 
                     # Read the JSON file
                     if Path(json_path).exists():
-                        with Path(json_path).open(encoding="utf-8") as json_file:
+                        with Path(json_path).open(
+                            encoding="utf-8",
+                        ) as json_file:
                             data = json.load(json_file)
                             title = data.get("title", "")
                             tags = data.get("tags", [])
