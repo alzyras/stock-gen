@@ -59,3 +59,5 @@ image_store/*
 
 # But do not ignore .gitkeep
 !image_store/.gitkeep
+
+*.csv
