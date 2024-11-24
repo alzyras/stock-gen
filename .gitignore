@@ -13,6 +13,8 @@ __pycache__/
 
 # Predownloaded models
 hf_cache/hub/
+hf_cache/realesrgan-models/*
+hf_cache/realesrgan-ncnn-vulkan/*
 
 # Distribution / packaging
 .Python
@@ -59,3 +61,5 @@ image_store/*
 
 # But do not ignore .gitkeep
 !image_store/.gitkeep
+
+*.csv

@@ -75,7 +75,11 @@ class CSVGenerator:
         header = ["Filename", "Title", "Keywords", "Category"]
 
         # Open the CSV file for writing
-        with Path(self.output_csv).open(mode="w", newline="", encoding="utf-8") as file:
+        with Path(self.output_csv).open(
+            mode="w",
+            newline="",
+            encoding="utf-8",
+        ) as file:
             writer = csv.writer(file)
             writer.writerow(header)
 
@@ -88,7 +92,9 @@ class CSVGenerator:
 
                     # Read the JSON file
                     if Path(json_path).exists():
-                        with Path(json_path).open(encoding="utf-8") as json_file:
+                        with Path(json_path).open(
+                            encoding="utf-8",
+                        ) as json_file:
                             data = json.load(json_file)
                             title = data.get("title", "")
                             tags = data.get("tags", [])
