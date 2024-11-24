@@ -6,38 +6,64 @@ This documentation lists the classes, functions, arguments, and docstrings from 
 
 ### Functions
 
-- **setup_logging**()
+- **setup_logging**
+  - Arguments:
   - Docstring: Set up logging configuration.
-- **load_environment_variables**()
+- **load_environment_variables**
+  - Arguments:
   - Docstring: No docstring available
-- **initialize**()
+- **initialize**
+  - Arguments:
   - Docstring: No docstring available
 
 ## app.py
 
 ### Functions
 
-- **load_image_generator**(model_name)
+- **load_image_generator**
+  - Arguments:
+    - model_name
   - Docstring: Function to load the ImageGenerator object.
-- **save_image_helper**(image_data, identifier_helper)
+- **save_image_helper**
+  - Arguments:
+    - image_data
+    - identifier_helper
   - Docstring: No docstring available
-- **main**()
+- **main**
+  - Arguments:
   - Docstring: Main function to run the Streamlit app to display generated images in a grid.
 
 ## text2img.py
 
 ### Functions
 
-- **save_image**(self, path)
+- **save_image**
+  - Arguments:
+    - self
+    - path
   - Docstring: Save the image to the specified path.
-- **__init__**(self, model_name, cpu_offload, precision)
+- **__init__**
+  - Arguments:
+    - self
+    - model_name
+    - cpu_offload
+    - precision
   - Docstring: Initializes the image generation pipeline with a specified model and precision.
 
 Args:
     model_name (str): Name of the pretrained model to load.
     cpu_offload (bool): Flag to enable CPU offloading for the model.
     precision (torch.dtype): Precision for the model, defaults to torch.float16.
-- **generate_image**(self, theme_prompt, subfolder, guidance_scale, height, width, num_inference_steps, max_sequence_length)
+- **generate_image**
+  - Arguments:
+    - self
+    - theme_prompt
+    - subfolder
+    - guidance_scale
+    - height
+    - width
+    - num_inference_steps
+    - max_sequence_length
   - Docstring: Generates and saves an image based on the given prompt and settings.
 
 Args:
@@ -51,24 +77,45 @@ Args:
 
 Returns:
     PictureData: Object containing the generated image metadata.
-- **_prepare_image_metadata**(self, theme_prompt, subfolder)
+- **_prepare_image_metadata**
+  - Arguments:
+    - self
+    - theme_prompt
+    - subfolder
   - Docstring: Function to prepare the image metadata based on the theme prompt.
 
 ### Class: ImageData
 
-- **save_image**(self, path)
+- **save_image**
+  - Arguments:
+    - self
+    - path
   - Docstring: Save the image to the specified path.
 
 ### Class: ImageGenerator
 
-- **__init__**(self, model_name, cpu_offload, precision)
+- **__init__**
+  - Arguments:
+    - self
+    - model_name
+    - cpu_offload
+    - precision
   - Docstring: Initializes the image generation pipeline with a specified model and precision.
 
 Args:
     model_name (str): Name of the pretrained model to load.
     cpu_offload (bool): Flag to enable CPU offloading for the model.
     precision (torch.dtype): Precision for the model, defaults to torch.float16.
-- **generate_image**(self, theme_prompt, subfolder, guidance_scale, height, width, num_inference_steps, max_sequence_length)
+- **generate_image**
+  - Arguments:
+    - self
+    - theme_prompt
+    - subfolder
+    - guidance_scale
+    - height
+    - width
+    - num_inference_steps
+    - max_sequence_length
   - Docstring: Generates and saves an image based on the given prompt and settings.
 
 Args:
@@ -82,14 +129,21 @@ Args:
 
 Returns:
     PictureData: Object containing the generated image metadata.
-- **_prepare_image_metadata**(self, theme_prompt, subfolder)
+- **_prepare_image_metadata**
+  - Arguments:
+    - self
+    - theme_prompt
+    - subfolder
   - Docstring: Function to prepare the image metadata based on the theme prompt.
 
 ## stock_categorizer.py
 
 ### Functions
 
-- **get_category**(theme_prompt, client)
+- **get_category**
+  - Arguments:
+    - theme_prompt
+    - client
   - Docstring: Function which takes in a theme prompt and returns prepared picture prompt and additional metadata.
 
 ### Class: TaggedCategory
@@ -99,25 +153,43 @@ Returns:
 
 ### Functions
 
-- **get_picture_prompt**(theme_prompt, client)
+- **get_picture_prompt**
+  - Arguments:
+    - theme_prompt
+    - client
   - Docstring: Function which takes in a theme prompt and returns prepared picture prompt and additional metadata.
-- **get_categories**(self, llm_client)
+- **get_categories**
+  - Arguments:
+    - self
+    - llm_client
   - Docstring: Extract the categories from the image prompt.
 
 ### Class: ImagePrompt
 
-- **get_categories**(self, llm_client)
+- **get_categories**
+  - Arguments:
+    - self
+    - llm_client
   - Docstring: Extract the categories from the image prompt.
 
 ## upscaler.py
 
 ### Functions
 
-- **get_upscaler**(env)
+- **get_upscaler**
+  - Arguments:
+    - env
   - Docstring: No docstring available
-- **__init__**(self)
+- **__init__**
+  - Arguments:
+    - self
   - Docstring: Initialize the ImageUpscaler.
-- **upscale_image**(self, input_path, save_path, prompt)
+- **upscale_image**
+  - Arguments:
+    - self
+    - input_path
+    - save_path
+    - prompt
   - Docstring: Upscale a low-resolution image.
 
 Args:
@@ -128,7 +200,12 @@ Args:
 
 Returns:
     bool: True if the image was successfully upscaled, False otherwise.
-- **upscale_and_save**(self, low_res_image, save_path, prompt)
+- **upscale_and_save**
+  - Arguments:
+    - self
+    - low_res_image
+    - save_path
+    - prompt
   - Docstring: Upscale a low-resolution image and save it to the specified path.
 
 Args:
@@ -137,7 +214,13 @@ Args:
     save_path (str): The path to save the upscaled image.
     prompt (str): The textual description to guide the upscaling.
     Defaults to an empty string.
-- **upscale_folder**(self, folder_path, use_prompt, overwrite, file_format)
+- **upscale_folder**
+  - Arguments:
+    - self
+    - folder_path
+    - use_prompt
+    - overwrite
+    - file_format
   - Docstring: Upscale all images in a folder and save them in the same folder.
 
 use_prompt (bool): Whether to use the image filename as the
@@ -147,11 +230,18 @@ If None, the original format is used.
 
 Returns:
     None
-- **__init__**(self)
+- **__init__**
+  - Arguments:
+    - self
   - Docstring: Initializes the Upscaler class.
 
 Currently, this constructor does not perform any operations.
-- **upscale_image**(self, input_path, save_path, prompt)
+- **upscale_image**
+  - Arguments:
+    - self
+    - input_path
+    - save_path
+    - prompt
   - Docstring: Upscale a low-resolution image using Real-ESRGAN.
 
 Args:
@@ -162,7 +252,12 @@ Args:
 
 Returns:
     bool: True if the image was successfully upscaled, False otherwise.
-- **__init__**(self, model_id, device, dtype)
+- **__init__**
+  - Arguments:
+    - self
+    - model_id
+    - device
+    - dtype
   - Docstring: Initialize the image upscaler pipeline.
 
 Args:
@@ -175,7 +270,12 @@ Args:
     Defaults to None.
     file_format (str): The format to save the upscaled images.
     Defaults to None.
-- **upscale_image**(self, input_path, save_path, prompt)
+- **upscale_image**
+  - Arguments:
+    - self
+    - input_path
+    - save_path
+    - prompt
   - Docstring: Upscale a low-resolution image using the pipeline.
 
 input_path (str | Path): The path to the low-resolution input image.
@@ -189,9 +289,16 @@ False otherwise.
 
 ### Class: ImageUpscaler
 
-- **__init__**(self)
+- **__init__**
+  - Arguments:
+    - self
   - Docstring: Initialize the ImageUpscaler.
-- **upscale_image**(self, input_path, save_path, prompt)
+- **upscale_image**
+  - Arguments:
+    - self
+    - input_path
+    - save_path
+    - prompt
   - Docstring: Upscale a low-resolution image.
 
 Args:
@@ -202,7 +309,12 @@ Args:
 
 Returns:
     bool: True if the image was successfully upscaled, False otherwise.
-- **upscale_and_save**(self, low_res_image, save_path, prompt)
+- **upscale_and_save**
+  - Arguments:
+    - self
+    - low_res_image
+    - save_path
+    - prompt
   - Docstring: Upscale a low-resolution image and save it to the specified path.
 
 Args:
@@ -211,7 +323,13 @@ Args:
     save_path (str): The path to save the upscaled image.
     prompt (str): The textual description to guide the upscaling.
     Defaults to an empty string.
-- **upscale_folder**(self, folder_path, use_prompt, overwrite, file_format)
+- **upscale_folder**
+  - Arguments:
+    - self
+    - folder_path
+    - use_prompt
+    - overwrite
+    - file_format
   - Docstring: Upscale all images in a folder and save them in the same folder.
 
 use_prompt (bool): Whether to use the image filename as the
@@ -224,11 +342,18 @@ Returns:
 
 ### Class: RealesrganUpscaler
 
-- **__init__**(self)
+- **__init__**
+  - Arguments:
+    - self
   - Docstring: Initializes the Upscaler class.
 
 Currently, this constructor does not perform any operations.
-- **upscale_image**(self, input_path, save_path, prompt)
+- **upscale_image**
+  - Arguments:
+    - self
+    - input_path
+    - save_path
+    - prompt
   - Docstring: Upscale a low-resolution image using Real-ESRGAN.
 
 Args:
@@ -242,7 +367,12 @@ Returns:
 
 ### Class: DiffusionUpscaler
 
-- **__init__**(self, model_id, device, dtype)
+- **__init__**
+  - Arguments:
+    - self
+    - model_id
+    - device
+    - dtype
   - Docstring: Initialize the image upscaler pipeline.
 
 Args:
@@ -255,7 +385,12 @@ Args:
     Defaults to None.
     file_format (str): The format to save the upscaled images.
     Defaults to None.
-- **upscale_image**(self, input_path, save_path, prompt)
+- **upscale_image**
+  - Arguments:
+    - self
+    - input_path
+    - save_path
+    - prompt
   - Docstring: Upscale a low-resolution image using the pipeline.
 
 input_path (str | Path): The path to the low-resolution input image.
@@ -271,7 +406,12 @@ False otherwise.
 
 ### Functions
 
-- **__init__**(self, image_dir, output_csv, category)
+- **__init__**
+  - Arguments:
+    - self
+    - image_dir
+    - output_csv
+    - category
   - Docstring: Initialize the CSVGenerator.
 
 Args:
@@ -281,14 +421,24 @@ Args:
 
 Returns:
     None
-- **get_category**(self, json_file)
+- **get_category**
+  - Arguments:
+    - self
+    - json_file
   - Docstring: Get the category from the JSON file or use the default category.
-- **create_csv**(self)
+- **create_csv**
+  - Arguments:
+    - self
   - Docstring: Create a CSV file from images and their metadata.
 
 ### Class: CSVGenerator
 
-- **__init__**(self, image_dir, output_csv, category)
+- **__init__**
+  - Arguments:
+    - self
+    - image_dir
+    - output_csv
+    - category
   - Docstring: Initialize the CSVGenerator.
 
 Args:
@@ -298,8 +448,13 @@ Args:
 
 Returns:
     None
-- **get_category**(self, json_file)
+- **get_category**
+  - Arguments:
+    - self
+    - json_file
   - Docstring: Get the category from the JSON file or use the default category.
-- **create_csv**(self)
+- **create_csv**
+  - Arguments:
+    - self
   - Docstring: Create a CSV file from images and their metadata.
 
