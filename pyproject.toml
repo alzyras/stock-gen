@@ -23,6 +23,7 @@ moviepy = "1.0.3"
 pydub = "^0.25.1"
 srt = "^3.5.3"
 edge-tts = { git = "https://github.com/rany2/edge-tts.git" }
+ffmpeg-python = "^0.2.0"
 
 
 [tool.poetry.group.development.dependencies]
