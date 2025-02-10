@@ -1,5 +1,5 @@
 import json
-import os 
+import os
 import logging
 from stock_image_generation.core.tts import EdgeTTS
 from stock_image_generation.core.text2img_simple import ImageGenerator
@@ -17,7 +17,7 @@ class AssetGenerator:
         self.voice = "en-US-JennyNeural"
 
     def read_json(self, file_path):
-        with open(file_path, 'r') as file:
+        with open(file_path, "r") as file:
             return json.load(file)
 
     def create_folder(self, script_path):
@@ -29,23 +29,23 @@ class AssetGenerator:
 
     def generate_audio(self, script_json, folder_path, voice="en-US-JennyNeural"):
         edge_tts = EdgeTTS()
-        
+
         for scene_number, scene in enumerate(script_json.get("scenes", []), start=1):
             LOGGER.info(f"Processing scene {scene_number}: {scene.get('title', 'Untitled')}")
-            
+
             scene_folder = os.path.join(folder_path, str(scene_number))
             os.makedirs(scene_folder, exist_ok=True)
-            
-            scene_description = scene.get('narrative', 'No description')
-            audio_file = os.path.join(scene_folder, 'audio.mp3')
-            srt_file = os.path.join(scene_folder, 'subtitles.srt')
-            
+
+            scene_description = scene.get("narrative", "No description")
+            audio_file = os.path.join(scene_folder, "audio.mp3")
+            srt_file = os.path.join(scene_folder, "subtitles.srt")
+
             if not os.path.exists(audio_file):
                 edge_tts.generate_audio(
                     text=scene_description,
                     voice=voice,
                     output_file=audio_file,
-                    srt_file=srt_file
+                    srt_file=srt_file,
                 )
             else:
                 LOGGER.info(f"Audio file for scene {scene_number} already exists. Skipping generation.")
@@ -53,18 +53,18 @@ class AssetGenerator:
     def generate_images(self, script_json, folder_path, quantity_each=1):
         image_generator = ImageGenerator()
 
-        for scene_number, scene in enumerate(script_json.get('scenes', []), start=1):
+        for scene_number, scene in enumerate(script_json.get("scenes", []), start=1):
             logger.INFO(f"Processing scene {scene_number}: {scene.get('story_title', 'Untitled')}")
             scene_folder = os.path.join(folder_path, str(scene_number))
             os.makedirs(scene_folder, exist_ok=True)
-            
-            image_prompts = scene.get('image_prompts', [])
+
+            image_prompts = scene.get("image_prompts", [])
             for i, prompt in enumerate(image_prompts, start=1):
                 for j in range(quantity_each):
                     image_file_path = os.path.join(scene_folder, f"{i}_{j+1}.png")
                     if not os.path.exists(image_file_path):
                         image_data = image_generator.generate_image(theme_prompt=prompt, subfolder=scene_folder, height=576, width=1024, num_inference_steps=2)
-                        
+
                         image_data.save_image(image_file_path)
                     else:
                         LOGGER.info(f"Image {i}_{j+1} for scene {scene_number} already exists. Skipping generation.")

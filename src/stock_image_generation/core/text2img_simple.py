@@ -10,7 +10,6 @@ from pydantic import ConfigDict
 
 from stock_image_generation.core.prompt_generation import (
     ImagePrompt,
-    get_picture_prompt,
 )
 
 DEFAULT_MODEL = os.environ["IMAGE_MODEL"]
@@ -27,13 +26,12 @@ class ImageData(ImagePrompt):
 
     def save_image(self, path: str | Path | None = None) -> None:
         """Save the image to the specified path."""
-        '''if path is None and self.path is not None:
+        """if path is None and self.path is not None:
             path = self.path
         else:
             error_message = "Path not provided for saving the image."
-            raise ValueError(error_message)'''
+            raise ValueError(error_message)"""
         print(path)
-        #path = self.path
         self.image.save(path)
 
 
@@ -53,7 +51,9 @@ class ImageGenerator:
             cpu_offload (bool): Flag to enable CPU offloading for the model.
             precision (torch.dtype): Precision for the model, defaults to torch.float16.
         """
-        self.pipe = FluxPipeline.from_pretrained(model_name, torch_dtype=torch.bfloat16).to("mps")
+        self.pipe = FluxPipeline.from_pretrained(
+            model_name, torch_dtype=torch.bfloat16
+        ).to("mps")
         self.llm_client = OpenAI()
         if cpu_offload:
             self.pipe.enable_sequential_cpu_offload()
@@ -102,7 +102,7 @@ class ImageGenerator:
             identifier=image_id,
             title="theme_prompt",
             description=theme_prompt,
-            tags=["image_prompt.tags","image_prompt.tags"],
+            tags=["image_prompt.tags", "image_prompt.tags"],
             generation_prompt="image_prompt.generation_prompt",
             image=image,
             path=str(image_path),
@@ -121,6 +121,5 @@ class ImageGenerator:
         )
         image_destination.mkdir(parents=True, exist_ok=True)
         image_path = image_destination / f"{image_id}.png"
-        #image_prompt = get_picture_prompt(theme_prompt, self.llm_client)
         image_prompt = theme_prompt
         return image_id, image_path, image_prompt
