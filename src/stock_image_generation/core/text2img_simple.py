@@ -1,4 +1,3 @@
-import logging
 import os
 import uuid
 from pathlib import Path
@@ -14,10 +13,8 @@ from stock_image_generation.core.prompt_generation import (
     get_picture_prompt,
 )
 
-LOGGER = logging.getLogger(__name__)
-
 DEFAULT_MODEL = os.environ["IMAGE_MODEL"]
-IMAGE_STORE = os.environ["IMAGE_STORE"]
+IMAGE_STORE = ""
 
 
 class ImageData(ImagePrompt):
@@ -30,13 +27,14 @@ class ImageData(ImagePrompt):
 
     def save_image(self, path: str | Path | None = None) -> None:
         """Save the image to the specified path."""
-        LOGGER.info(f"Saving image {self.identifier} to {path}")
-        if path is None and self.path is not None:
+        '''if path is None and self.path is not None:
             path = self.path
         else:
             error_message = "Path not provided for saving the image."
-            raise ValueError(error_message)
-        self.image.save(f"{path}/{self.identifier}.png")
+            raise ValueError(error_message)'''
+        print(path)
+        #path = self.path
+        self.image.save(path)
 
 
 class ImageGenerator:
@@ -45,7 +43,7 @@ class ImageGenerator:
     def __init__(
         self,
         model_name: str = DEFAULT_MODEL,
-        cpu_offload: bool = True,
+        cpu_offload: bool = False,
         precision: torch.dtype = torch.float16,
     ) -> None:
         """Initializes the image generation pipeline with a specified model and precision.
@@ -55,26 +53,13 @@ class ImageGenerator:
             cpu_offload (bool): Flag to enable CPU offloading for the model.
             precision (torch.dtype): Precision for the model, defaults to torch.float16.
         """
-        if torch.backends.mps.is_available():
-            self.pipe = FluxPipeline.from_pretrained(
-                model_name,
-                torch_dtype=torch.bfloat16,
-            ).to("mps")
-            cpu_offload = False
-        else:
-            self.pipe = FluxPipeline.from_pretrained(
-                model_name,
-                torch_dtype=torch.bfloat16,
-            )
-
+        self.pipe = FluxPipeline.from_pretrained(model_name, torch_dtype=torch.bfloat16).to("mps")
         self.llm_client = OpenAI()
-
         if cpu_offload:
             self.pipe.enable_sequential_cpu_offload()
             self.pipe.vae.enable_slicing()
             self.pipe.vae.enable_tiling()
             self.pipe.to(precision)
-        LOGGER.info(f"Image generator initialized with model {model_name}")
 
     def generate_image(
         self,
@@ -83,6 +68,7 @@ class ImageGenerator:
         guidance_scale: float = 0.0,
         height: int = 1024,
         width: int = 1024,
+        index: int = 1,
         num_inference_steps: int = 1,
         max_sequence_length: int = 256,
     ) -> ImageData:
@@ -105,20 +91,19 @@ class ImageGenerator:
             subfolder,
         )
         image = self.pipe(
-            prompt=image_prompt.generation_prompt,
+            prompt=theme_prompt,
             guidance_scale=guidance_scale,
             height=height,
             width=width,
             num_inference_steps=num_inference_steps,
             max_sequence_length=max_sequence_length,
         ).images[0]
-        LOGGER.info(f"Generated image {image_id}")
         return ImageData(
             identifier=image_id,
-            title=image_prompt.title,
-            description=image_prompt.description,
-            tags=image_prompt.tags,
-            generation_prompt=image_prompt.generation_prompt,
+            title="theme_prompt",
+            description=theme_prompt,
+            tags=["image_prompt.tags","image_prompt.tags"],
+            generation_prompt="image_prompt.generation_prompt",
             image=image,
             path=str(image_path),
             theme_prompt=theme_prompt,
@@ -135,6 +120,7 @@ class ImageGenerator:
             Path(IMAGE_STORE) / subfolder if subfolder else Path(IMAGE_STORE)
         )
         image_destination.mkdir(parents=True, exist_ok=True)
-        image_prompt = get_picture_prompt(theme_prompt, self.llm_client)
-        LOGGER.info(f"Prepared image metadata for {image_id}")
-        return image_id, image_destination, image_prompt
+        image_path = image_destination / f"{image_id}.png"
+        #image_prompt = get_picture_prompt(theme_prompt, self.llm_client)
+        image_prompt = theme_prompt
+        return image_id, image_path, image_prompt

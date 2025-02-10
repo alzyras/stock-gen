@@ -1,10 +1,9 @@
 [tool.poetry]
 name = "stock_image_generation"
 version = "0.1.0"
-description = "Example template for Python applications"
-authors = ["Marius Arlauskas"]
+description = ""
+authors = ["tt <a@a.com>"]
 readme = "README.md"
-package-mode = true
 
 [tool.poetry.dependencies]
 python = "~3.12"
@@ -19,17 +18,18 @@ pydantic = "^2.9.2"
 streamlit = "^1.40.0"
 torch = "^2.5.1"
 pillow = ">=9.2.0,<11.0.0"
-moviepy = "1.0.3"
+moviepy = "2.0.0.dev2"
 pydub = "^0.25.1"
 srt = "^3.5.3"
 edge-tts = { git = "https://github.com/rany2/edge-tts.git" }
 ffmpeg-python = "^0.2.0"
-
+mosaico = "0.1.0rc7"
+mutagen = "^1.47.0"
 
 [tool.poetry.group.development.dependencies]
-ruff = '^0.0.285'
-isort = '^5.12.0'
-black = '^23.7.0'
+ruff = "^0.0.285"
+isort = "^5.12.0"
+black = "^23.7.0"
 pytest = "^8.2.2"
 python-dotenv = "^1.0.1"
 
@@ -37,18 +37,17 @@ python-dotenv = "^1.0.1"
 ipykernel = "^6.29.5"
 pickleshare = "^0.7.5"
 
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 # match black
-line-length = 88 # Same as Black
+line-length = 88
 target-version = "py310"
 pydocstyle.convention = "google"
 select = [
-    "ALL", # include all the rules, including new ones
+    "ALL"
 ]
 ignore = [
     "G004", # logging with f-strings
@@ -73,16 +72,17 @@ ignore = [
 ]
 
 [tool.ruff.flake8-quotes]
-docstring-quotes = 'double'
-inline-quotes = 'double'
-multiline-quotes = 'double'
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
 
 [tool.black]
 line-length = 88
 skip-string-normalization = true
 
-[tool.isort] # Making isort compatible with black
-profile = 'black'
+[tool.isort]
+# Making isort compatible with black
+profile = "black"
 multi_line_output = 3
 line_length = 88
 include_trailing_comma = true

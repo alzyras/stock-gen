@@ -63,3 +63,9 @@ image_store/*
 !image_store/.gitkeep
 
 *.csv
+*.png
+*.mp4
+*.srt
+*.mp3
+store/projects/*
+hf_cache
