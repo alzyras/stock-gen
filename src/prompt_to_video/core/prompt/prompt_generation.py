@@ -4,7 +4,7 @@ import os
 from openai import OpenAI
 from pydantic import BaseModel
 
-from stock_image_generation.core.stock_categorizer import get_category
+from prompt_to_video.core.stock_categorizer import get_category
 
 LOGGER = logging.getLogger(__name__)
 

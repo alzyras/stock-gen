@@ -1,15 +1,16 @@
-import os
 import logging
-from pydub.utils import mediainfo
+import os
+
 from mosaico.assets import create_asset
+from mosaico.assets.audio import AudioAssetParams
 from mosaico.assets.image import ImageAssetParams
 from mosaico.assets.reference import AssetReference
 from mosaico.effects.pan import PanLeftEffect, PanRightEffect
 from mosaico.effects.zoom import ZoomInEffect, ZoomOutEffect
-from mosaico.assets.audio import AudioAssetParams
 from mosaico.scene import Scene
 from mosaico.video.project import VideoProject, VideoProjectConfig
 from mosaico.video.rendering import render_video
+from pydub.utils import mediainfo
 
 LOGGER = logging.getLogger(__name__)
 

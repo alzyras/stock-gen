@@ -2,7 +2,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from stock_image_generation.core.text2img import ImageData, ImageGenerator
+from prompt_to_video.core.text2img import ImageData, ImageGenerator
 
 MODELS = [
     "black-forest-labs/FLUX.1-schnell",

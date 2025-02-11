@@ -1,6 +1,6 @@
 env:
-	pip3 install poetry
-	pip3 install pre-commit
+	pip install poetry
+	pip install pre-commit
 	poetry install
 	pre-commit install
 	poetry shell
