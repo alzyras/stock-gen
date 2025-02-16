@@ -1,5 +1,5 @@
 import logging
-import os
+from io import BytesIO
 
 from mosaico.assets import create_asset
 from mosaico.assets.audio import AudioAssetParams
@@ -10,61 +10,80 @@ from mosaico.effects.zoom import ZoomInEffect, ZoomOutEffect
 from mosaico.scene import Scene
 from mosaico.video.project import VideoProject, VideoProjectConfig
 from mosaico.video.rendering import render_video
-from pydub.utils import mediainfo
+from PIL import Image
+from pydub import AudioSegment
 
 LOGGER = logging.getLogger(__name__)
 
 
-class VideoGenerator:
-    def __init__(self, project_folder) -> None:
-        self.project_folder = project_folder
-        self.project = VideoProject(config=VideoProjectConfig())
-        self.scenes = []
-        self.start_time = 0
 
-    def get_audio_length(self, audio_path):
-        """Get the length of an audio file in seconds."""
-        info = mediainfo(audio_path)
-        return float(info["duration"])
+def pil_image_to_bytes(image: Image.Image) -> bytes:
+    """Convert a PIL Image object to bytes.
 
-    def process_scene(self, scene_folder):
-        """Process a single scene: match images and audio, then create scene objects."""
-        audio_path = os.path.join(scene_folder, "audio.mp3")
-        if not os.path.exists(audio_path):
-            LOGGER.info(f"Audio file not found in {scene_folder}. Skipping...")
-            return
+    Args:
+        image: A PIL Image object.
 
-        audio_length = self.get_audio_length(audio_path)
-        image_files = sorted(
-            [f for f in os.listdir(scene_folder) if f.endswith((".png", ".jpg"))],
-            key=lambda x: tuple(map(int, os.path.splitext(x)[0].split("_"))),
-        )
+    Returns:
+        The image data as bytes.
+    """
+    with BytesIO() as output:
+        image.save(output, format="JPEG")
+        return output.getvalue()
 
-        if not image_files:
-            LOGGER.info(f"No images found in {scene_folder}. Skipping...")
-            return
+def audio_segment_to_bytes(audio: AudioSegment) -> bytes:
+    """Convert an AudioSegment object to bytes in a specific format.
 
-        num_images = len(image_files)
+    Args:
+        audio: The AudioSegment object.
+        format: The desired audio format (default is 'mp3').
+
+    Returns:
+        Bytes representing the audio file.
+    """
+    with BytesIO() as output:
+        audio.export(output)
+        return output.getvalue()
+
+
+def generate_video_from_objects(
+    video_title: str,
+    images_per_scene: list[list[Image.Image]],
+    audio_per_scene: list[AudioSegment],
+    output_path: str,
+) -> str:
+    """Generate a video using image objects from PIL and audio objects from pydub.
+
+    Args:
+        images_per_scene: A list of lists, where each inner list contains Image objects for a scene.
+        audio_per_scene: A list of AudioSegment objects representing the audio per scene.
+        output_path: Path where the final video will be saved.
+
+    Returns:
+        The path to the final video file.
+    """  # noqa: E501
+    project = VideoProject(config=VideoProjectConfig())
+    scenes = []
+    start_time = 0
+
+    for scene_index, (images, audio) in enumerate(
+        zip(images_per_scene, audio_per_scene, strict=True)
+    ):
+
+        audio_length = len(audio) / 1000  # Convert milliseconds to seconds
+        num_images = len(images)
         time_per_image = audio_length / num_images
         image_refs = []
 
-        for i, image_file in enumerate(image_files):
-            image_path = os.path.join(scene_folder, image_file)
-            asset_id = os.path.splitext(image_file)[0]
-
-            try:
-                asset = create_asset(
-                    "image", path=image_path, id=f"{scene_folder}_{asset_id}"
-                )
-            except Exception as e:
-                LOGGER.exception(f"Error creating asset for {image_path}: {e}")
-                continue
+        for i, image in enumerate(images):
+            asset_id = f"scene{scene_index}_img{i}"
+            image_data = pil_image_to_bytes(image)
+            asset = create_asset("image", data=image_data, id=asset_id)
 
             effect = ZoomInEffect() if i % 2 == 0 else ZoomOutEffect()
             pan_effect = PanLeftEffect() if i % 2 == 0 else PanRightEffect()
 
-            image_start = self.start_time + (i * time_per_image)
-            image_end = self.start_time + ((i + 1) * time_per_image)
+            image_start = start_time + (i * time_per_image)
+            image_end = start_time + ((i + 1) * time_per_image)
 
             ref = (
                 AssetReference.from_asset(asset)
@@ -74,45 +93,39 @@ class VideoGenerator:
                 .with_params(params=ImageAssetParams(z_index=0, as_background=True))
             )
             image_refs.append(ref)
-            self.project.add_assets(asset)
-
-        audio_asset = create_asset(
-            "audio", path=audio_path, id=f"audio_{self.start_time}"
-        )
+            project.add_assets(asset)
+        audio_data = audio_segment_to_bytes(audio)
+        audio_asset = create_asset("audio", data=audio_data, id=f"audio_{start_time}")
         audio_ref = (
             AssetReference.from_asset(audio_asset)
-            .with_start_time(self.start_time)
-            .with_end_time(self.start_time + audio_length)
-        )
-        audio_ref = audio_ref.with_params(params=AudioAssetParams(volume=1))
+            .with_start_time(start_time)
+            .with_end_time(start_time + audio_length)
+        ).with_params(params=AudioAssetParams(volume=1))
 
-        self.project.add_assets(audio_asset)
+        project.add_assets(audio_asset)
         scene = Scene(asset_references=[*image_refs, audio_ref])
-        self.scenes.append(scene)
-        self.start_time += audio_length
+        scenes.append(scene)
+        start_time += audio_length
 
-    def generate_video(self):
-        """Iterate through scene folders and build the final video project."""
-        scene_folders = sorted(
-            [f for f in os.listdir(self.project_folder) if f.isdigit()],
-            key=lambda x: int(x),
-        )
+    for scene in scenes:
+        project.add_timeline_events(scene)
 
-        for scene_name in scene_folders:
-            scene_path = os.path.join(self.project_folder, scene_name)
-            if os.path.isdir(scene_path):
-                self.process_scene(scene_path)
+    render_video(project, output_path)
+    LOGGER.info(f"Final video created at: {output_path}")
 
-        for scene in self.scenes:
-            self.project.add_timeline_events(scene)
-
-        output_path = os.path.join(self.project_folder, "final_video.mp4")
-        render_video(self.project, self.project_folder)
-        LOGGER.info(f"Final video created at: {output_path}")
-        return output_path
+    return output_path
 
 
-if __name__ == "__main__":
-    folder = "store/projects/historic_facts/top_5_foods_medieval_england/"
-    generator = VideoGenerator(folder)
-    generator.generate_video()
+
+# Example: Load images and audio
+scene1_images = [Image.open("image1.jpg"), Image.open("image2.jpg")]
+scene2_images = [Image.open("image3.jpg"), Image.open("image4.jpg")]
+scene1_audio = AudioSegment.from_file("audio1.mp3")
+scene2_audio = AudioSegment.from_file("audio2.mp3")
+
+# Call the function
+generate_video_from_objects(
+    images_per_scene=[scene1_images, scene2_images],
+    audio_per_scene=[scene1_audio, scene2_audio],
+    output_path="",
+)

@@ -1,8 +1,8 @@
 import torch
 from diffusers import FluxPipeline
+from PIL.Image import Image
 
-from prompt_to_video.core.image import ImageData
-from prompt_to_video.settings import DEFAULT_MODEL, USE_MPS
+from prompt_to_video.settings import IMAGE_GENERATION_MODEL, USE_MPS
 
 
 class ImageGenerator:
@@ -10,7 +10,7 @@ class ImageGenerator:
 
     def __init__(
         self,
-        model_name: str = DEFAULT_MODEL,
+        model_name: str = IMAGE_GENERATION_MODEL,
         cpu_offload: bool = False,
         precision: torch.dtype = torch.float16,
         use_mps: bool = USE_MPS,
@@ -45,7 +45,7 @@ class ImageGenerator:
         width: int = 1024,
         num_inference_steps: int = 1,
         max_sequence_length: int = 256,
-    ) -> ImageData:
+    ) -> Image:
         """Generates and saves an image based on the given prompt and settings.
 
         Args:
@@ -60,7 +60,7 @@ class ImageGenerator:
         Returns:
             PictureData: Object containing the generated image metadata.
         """
-        image = self.pipe(
+        return self.pipe(
             prompt=prompt,
             guidance_scale=guidance_scale,
             height=height,
@@ -68,7 +68,3 @@ class ImageGenerator:
             num_inference_steps=num_inference_steps,
             max_sequence_length=max_sequence_length,
         ).images[0]
-        return ImageData(
-            prompt=prompt,
-            image=image,
-        )

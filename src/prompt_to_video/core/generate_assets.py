@@ -2,9 +2,8 @@ import json
 import logging
 import os
 
-from prompt_to_video.core.image.text2img_simple import \
-    ImageGenerator
-from prompt_to_video.core.tts import EdgeTTS
+from prompt_to_video.core.audio.tts import EdgeTTS
+from prompt_to_video.core.image.text2img_simple import ImageGenerator
 
 LOGGER = logging.getLogger(__name__)
 

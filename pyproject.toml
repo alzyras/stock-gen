@@ -29,6 +29,10 @@ edge-tts = { git = "https://github.com/rany2/edge-tts.git" }
 ffmpeg-python = "^0.2.0"
 mosaico = "0.1.0rc7"
 mutagen = "^1.47.0"
+torchaudio = "^2.6.0"
+mamba-ssm = "^2.2.4"
+triton = "^3.2.0"
+ffmpeg = "^1.4"
 
 [tool.poetry.group.development.dependencies]
 python-dotenv = "^1.0.1"
