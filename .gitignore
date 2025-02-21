@@ -58,10 +58,10 @@ credentials.json
 test*
 
 # Ignore everything in image_store
-image_store/*
+data/*
 
 # But do not ignore .gitkeep
-!image_store/.gitkeep
+!data/.gitkeep
 
 *.csv
 *.png
@@ -70,3 +70,4 @@ image_store/*
 *.mp3
 store/projects/*
 hf_cache
+

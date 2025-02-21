@@ -3,8 +3,10 @@ import logging
 from openai import OpenAI
 from pydantic import BaseModel
 
-from prompt_to_video.settings import (TEXT_GENERATION_MODEL,
-                                      VIDEO_SCRIPT_GENERATION_SYSTEM_PROMPT)
+from prompt_to_video.settings import (
+    TEXT_GENERATION_MODEL,
+    VIDEO_SCRIPT_GENERATION_SYSTEM_PROMPT,
+)
 
 LOGGER = logging.getLogger(__name__)
 
@@ -37,6 +39,14 @@ class VideoScript(BaseModel):
         """Return a formatted string representation of a video script."""
         chapters_str = "\n\n".join(str(chapter) for chapter in self.chapters)
         return f"VideoScript: {self.title}\n\n{chapters_str}"
+
+    def get_full_narrative(self) -> str:
+        """Return the full narrative of the video script."""
+        return "\n".join(chapter.narrative for chapter in self.chapters)
+
+    def get_all_scenes(self) -> list[Scene]:
+        """Return a list of all scenes in the video script."""
+        return [scene for chapter in self.chapters for scene in chapter.scenes]
 
 
 def generate_video_script(

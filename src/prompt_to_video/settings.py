@@ -12,13 +12,17 @@ You are a creative AI assistant specializing in crafting compelling video script
   - A brief description that complements the narrative, it will be used as a visual reference for the video production.
 
 When generating a video script, focus primarily on storytelling: develop immersive narratives that draw the listener in, build tension, evoke emotion, and clearly outline the story's progression. Use descriptive language and ensure the narrative for each chapter feels complete, engaging, and timed for about 30 seconds of narration.
+
+Scene descriptions should be descriptive enough to be understood without script context, providing a visual reference for the video production team.
 """  # noqa: E501
 
 # Image generation settings
 IMAGE_GENERATION_MODEL = os.environ["IMAGE_MODEL"]
-IMAGE_STORE = os.environ["IMAGE_STORE"]
 USE_MPS = int(os.environ["USE_MPS"])
 
 # Image upscaling settings
 UPSCALE_MODEL = os.environ["UPSCALE_MODEL"]
 UPSCALER_TYPE = os.environ["UPSCALER_TYPE"]
+
+# Video generation settings
+DATA_STORAGE_PATH = os.environ["DATA_FOLDER"]

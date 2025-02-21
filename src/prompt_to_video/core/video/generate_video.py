@@ -13,8 +13,9 @@ from mosaico.video.rendering import render_video
 from PIL import Image
 from pydub import AudioSegment
 
-LOGGER = logging.getLogger(__name__)
+from prompt_to_video.settings import DATA_STORAGE_PATH
 
+LOGGER = logging.getLogger(__name__)
 
 
 def pil_image_to_bytes(image: Image.Image) -> bytes:
@@ -29,6 +30,7 @@ def pil_image_to_bytes(image: Image.Image) -> bytes:
     with BytesIO() as output:
         image.save(output, format="JPEG")
         return output.getvalue()
+
 
 def audio_segment_to_bytes(audio: AudioSegment) -> bytes:
     """Convert an AudioSegment object to bytes in a specific format.
@@ -49,11 +51,12 @@ def generate_video_from_objects(
     video_title: str,
     images_per_scene: list[list[Image.Image]],
     audio_per_scene: list[AudioSegment],
-    output_path: str,
+    output_path: str = DATA_STORAGE_PATH,
 ) -> str:
     """Generate a video using image objects from PIL and audio objects from pydub.
 
     Args:
+        video_title: Title of the video.
         images_per_scene: A list of lists, where each inner list contains Image objects for a scene.
         audio_per_scene: A list of AudioSegment objects representing the audio per scene.
         output_path: Path where the final video will be saved.
@@ -61,14 +64,13 @@ def generate_video_from_objects(
     Returns:
         The path to the final video file.
     """  # noqa: E501
-    project = VideoProject(config=VideoProjectConfig())
+    project = VideoProject(config=VideoProjectConfig(title=video_title))
     scenes = []
     start_time = 0
 
     for scene_index, (images, audio) in enumerate(
         zip(images_per_scene, audio_per_scene, strict=True)
     ):
-
         audio_length = len(audio) / 1000  # Convert milliseconds to seconds
         num_images = len(images)
         time_per_image = audio_length / num_images
@@ -114,18 +116,3 @@ def generate_video_from_objects(
     LOGGER.info(f"Final video created at: {output_path}")
 
     return output_path
-
-
-
-# Example: Load images and audio
-scene1_images = [Image.open("image1.jpg"), Image.open("image2.jpg")]
-scene2_images = [Image.open("image3.jpg"), Image.open("image4.jpg")]
-scene1_audio = AudioSegment.from_file("audio1.mp3")
-scene2_audio = AudioSegment.from_file("audio2.mp3")
-
-# Call the function
-generate_video_from_objects(
-    images_per_scene=[scene1_images, scene2_images],
-    audio_per_scene=[scene1_audio, scene2_audio],
-    output_path="",
-)

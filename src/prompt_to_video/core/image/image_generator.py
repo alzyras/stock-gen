@@ -11,7 +11,7 @@ class ImageGenerator:
     def __init__(
         self,
         model_name: str = IMAGE_GENERATION_MODEL,
-        cpu_offload: bool = False,
+        cpu_offload: bool = True,
         precision: torch.dtype = torch.float16,
         use_mps: bool = USE_MPS,
     ) -> None:
@@ -25,11 +25,11 @@ class ImageGenerator:
         """
         if use_mps:
             self.pipe = FluxPipeline.from_pretrained(
-                model_name, torch_dtype=torch.bfloat16
+                model_name, torch_dtype=torch.float16
             ).to("mps")
         else:
             self.pipe = FluxPipeline.from_pretrained(
-                model_name, torch_dtype=torch.bfloat16
+                model_name, torch_dtype=torch.float16
             )
         if cpu_offload:
             self.pipe.enable_sequential_cpu_offload()
@@ -67,4 +67,5 @@ class ImageGenerator:
             width=width,
             num_inference_steps=num_inference_steps,
             max_sequence_length=max_sequence_length,
+            generator=torch.Generator("cpu").manual_seed(0),
         ).images[0]
