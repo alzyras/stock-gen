@@ -132,9 +132,7 @@ def generate_subtitle_ref(subtitle, start_time, audio_length):
 
 def add_background_music(total_duration, music_track, music_volume=1.0):
     """Generate a looped background music track with no fade-in or fade-out effects, at full volume."""
-    total_duration_ms = int(total_duration * 1000)  # Convert total duration to milliseconds    
-    #audio_asset = create_asset("audio", data=audio_data, id=f"audio_{start_time}")      
-    # Extend or trim background music to match total duration
+    total_duration_ms = int(total_duration * 1000)  # Convert total duration to milliseconds       
     if len(music_track) < total_duration_ms:
         loops = (total_duration_ms // len(music_track)) + 1
         music = (music_track * loops)[:total_duration_ms]  # Repeat and trim
