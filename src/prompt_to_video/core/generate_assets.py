@@ -1,9 +1,9 @@
 import json
-import os
 import logging
-from stock_image_generation.core.tts import EdgeTTS
-from stock_image_generation.core.text2img_simple import ImageGenerator
+import os
 
+from prompt_to_video.core.audio.tts import EdgeTTS
+from prompt_to_video.core.image.text2img_simple import ImageGenerator
 
 LOGGER = logging.getLogger(__name__)
 
