@@ -4,7 +4,6 @@ version = "1.0.0"
 description = "Example template for Python applications"
 authors = ["Marius Arlauskas", "Tomas Timinskas"]
 readme = "README.md"
-package-mode = true
 
 [tool.poetry.requires-plugins]
 poetry-plugin-export = ">=1.8"
@@ -22,19 +21,18 @@ pydantic = "^2.9.2"
 streamlit = "^1.40.0"
 torch = "^2.5.1"
 pillow = ">=9.2.0,<11.0.0"
-moviepy = "2.0.0.dev2"
 pydub = "^0.25.1"
 srt = "^3.5.3"
 edge-tts = { git = "https://github.com/rany2/edge-tts.git" }
 ffmpeg-python = "^0.2.0"
-mosaico = "0.1.0rc7"
 mutagen = "^1.47.0"
 torchaudio = "^2.6.0"
-mamba-ssm = "^2.2.4"
-triton = "^3.2.0"
 ffmpeg = "^1.4"
 jupyter = "^1.1.1"
 ipywidgets = "^8.1.5"
+whisper = "^1.1.10"
+pysrt = "^1.1.2"
+mosaico = "^0.4.0"
 
 [tool.poetry.group.development.dependencies]
 python-dotenv = "^1.0.1"

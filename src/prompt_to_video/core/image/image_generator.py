@@ -25,7 +25,7 @@ class ImageGenerator:
         """
         if use_mps:
             self.pipe = FluxPipeline.from_pretrained(
-                model_name, torch_dtype=torch.float16
+                model_name, torch_dtype=torch.bfloat16
             ).to("mps")
         else:
             self.pipe = FluxPipeline.from_pretrained(
