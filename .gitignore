@@ -21,7 +21,6 @@ hf_cache/realesrgan-ncnn-vulkan/*
 env/
 .venv
 venv
-.poetry
 
 # Unit test / coverage reports
 .coverage

@@ -19,7 +19,7 @@ cp .env.tmpl .env
 make env
 ```
 
-Edit `.env` with your model/API settings. The most important values are:
+This installs `uv`, syncs the development environment, and installs pre-commit hooks. Edit `.env` with your model/API settings. The most important values are:
 
 ```bash
 OPENAI_API_KEY="..."
@@ -44,7 +44,7 @@ make check     # Compile, lint, and test
 Run the Streamlit app:
 
 ```bash
-poetry run streamlit run src/prompt_to_video/app.py
+uv run streamlit run src/prompt_to_video/app.py
 ```
 
 ## Project Layout
@@ -65,4 +65,4 @@ tests/                           # Lightweight unit tests
 
 - Generated media, databases, model caches, zips, and local notebooks should stay out of git.
 - The test suite intentionally avoids loading ML models or rendering video; those paths should be integration-tested manually or with mocked adapters.
-- `poetry.lock` should be committed for reproducible application installs.
+- `uv.lock` should be committed for reproducible application installs.
