@@ -5,7 +5,7 @@ import torch
 from diffusers import StableDiffusionUpscalePipeline
 from PIL import Image
 
-from prompt_to_video.core.image.upscaling import ImageUpscaler
+from prompt_to_video.core.image.upscaling.abstract import ImageUpscaler
 from prompt_to_video.settings import UPSCALE_MODEL
 
 LOGGER = logging.getLogger(__name__)

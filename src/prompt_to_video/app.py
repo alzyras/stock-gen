@@ -2,7 +2,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from prompt_to_video.core.text2img import ImageData, ImageGenerator
+from prompt_to_video.core.image import ImageData, ImageGenerator
 
 MODELS = [
     "black-forest-labs/FLUX.1-schnell",
@@ -12,46 +12,44 @@ MODELS = [
 
 @st.cache_resource
 def load_image_generator(model_name: str) -> ImageGenerator:
-    """Function to load the ImageGenerator object."""
+    """Load and cache the image generator."""
     return ImageGenerator(model_name)
 
 
-def save_image_helper(image_data: ImageData, identifier_helper: int) -> None:
-    image_data.save_image()
+def save_image_helper(image_data: ImageData, identifier_helper: str) -> None:
+    """Persist the image and its sidecar metadata."""
+    image_path = image_data.save_image()
     image_data.get_categories(st.session_state.image_generator.llm_client)
-    with Path(f"{image_data.path}/{image_data.identifier}.json").open("w") as f:
-        f.write(image_data.model_dump_json(exclude={"image"}))
-    st.success(f"Image {identifier_helper} saved successfully!")
+    metadata_path = Path(image_data.path) / f"{image_data.identifier}.json"
+    metadata_path.write_text(
+        image_data.model_dump_json(exclude={"image"}),
+        encoding="utf-8",
+    )
+    st.success(f"Image {identifier_helper} saved to {image_path}")
 
 
 def main() -> None:
-    """Main function to run the Streamlit app to display generated images in a grid."""
+    """Run the Streamlit image generation app."""
     st.title("Image Generation App")
-    st.write(
-        "Enter a description below, press 'Generate Images', and view the generated images.",
-    )
+    st.write("Enter a description, generate images, then save selected results.")
 
-    # Text input for the user to enter a description
     user_input = st.text_input("Enter description:")
 
-    # Initialize session state for generated images and number of images to generate
     if "generated_images" not in st.session_state:
         st.session_state.generated_images = []
-    if "images_to_generate" not in st.session_state:
-        st.session_state.images_to_generate = 3  # Default to generating 9 images
+    if "image_generator" not in st.session_state:
+        st.session_state.image_generator = None
 
-    # Set the number of images to generate
-    model = st.sidebar.selectbox(
-        "Model used for inference:",
-        MODELS,
-    )
+    model = st.sidebar.selectbox("Model used for inference:", MODELS)
     if st.sidebar.button("Load Model"):
         st.session_state.image_generator = load_image_generator(model)
-        st.success("Model loaded successfully!")
+        st.success("Model loaded successfully")
+
     images_to_generate = st.sidebar.slider(
         "Number of images to generate:",
         min_value=1,
         max_value=30,
+        value=3,
     )
     image_height = st.sidebar.number_input(
         "Image height:",
@@ -73,51 +71,44 @@ def main() -> None:
     )
     image_subfolder = st.sidebar.text_input("Image subfolder (optional):")
 
-    # Generate images when the button is pressed
     if st.button("Generate Images"):
-        if user_input:
+        if not user_input:
+            st.warning("Please enter a description to generate images.")
+        elif st.session_state.image_generator is None:
+            st.warning("Load a model before generating images.")
+        else:
             st.session_state.generated_images = [
                 st.session_state.image_generator.generate_image(
                     user_input,
                     height=image_height,
                     width=image_width,
                     num_inference_steps=steps,
-                    subfolder=image_subfolder,
+                    subfolder=image_subfolder or None,
                 )
                 for _ in range(images_to_generate)
             ]
-            st.success("Images generated successfully!")
-        else:
-            st.warning("Please enter a description to generate images.")
+            st.success("Images generated successfully")
 
-    # Display images in rows of 3
     if st.session_state.generated_images:
-        # Calculate number of rows based on the number of images
-        num_rows = (
-            len(st.session_state.generated_images) + 2
-        ) // 3  # Rounding up to ensure full row
-
+        num_rows = (len(st.session_state.generated_images) + 2) // 3
         for row in range(num_rows):
-            # Create columns for the row
             cols = st.columns(3)
             for col_idx in range(3):
                 idx = row * 3 + col_idx
-                if idx < len(st.session_state.generated_images):
-                    current_image = st.session_state.generated_images[idx]
-                    with cols[col_idx]:
-                        st.image(current_image.image, use_container_width=True)
-                        st.markdown(
-                            f"**{current_image.title}**  \n{current_image.description[:200]}",
-                        )
-                        st.button(
-                            "Save Image",
-                            key=f"save_button_{idx}",
-                            on_click=save_image_helper,
-                            args=(
-                                current_image,
-                                f"{current_image.description[:20]}...",
-                            ),
-                        )
+                if idx >= len(st.session_state.generated_images):
+                    continue
+                current_image = st.session_state.generated_images[idx]
+                with cols[col_idx]:
+                    st.image(current_image.image, use_container_width=True)
+                    st.markdown(
+                        f"**{current_image.title}**  \n{current_image.description[:200]}",
+                    )
+                    st.button(
+                        "Save Image",
+                        key=f"save_button_{idx}",
+                        on_click=save_image_helper,
+                        args=(current_image, f"{current_image.description[:20]}..."),
+                    )
 
 
 if __name__ == "__main__":

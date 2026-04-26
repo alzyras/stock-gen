@@ -1,7 +1,7 @@
 from openai import OpenAI
 from pydantic import BaseModel
 
-from prompt_to_video.core.prompt import VideoScript
+from prompt_to_video.core.prompt.video_script import VideoScript
 from prompt_to_video.settings import (
     TEXT_GENERATION_MODEL,
     VIDEO_SCRIPT_GENERATION_SYSTEM_PROMPT,
@@ -29,7 +29,7 @@ def generate_image_prompts(
                 {"role": "system", "content": str(video_script)},
                 {
                     "role": "user",
-                    "content": "Based on the video script, generate image prompts from scenes, be detailed, as it will be used as standalone prompts, and context from the video script will be lost. Each scene should correspond to one prompt.",  # noqa: E501
+                    "content": "Based on the video script, generate image prompts from scenes, be detailed, as it will be used as standalone prompts, and context from the video script will be lost. Each scene should correspond to one prompt.",
                 },
             ],
             response_format=ImagePrompts,
