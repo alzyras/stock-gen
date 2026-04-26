@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "prompt_to_video"
 version = "1.0.0"
-description = "Example template for Python applications"
+description = "Prompt-to-video generation pipeline for scripts, images, narration, subtitles, and rendered videos"
 authors = ["Marius Arlauskas", "Tomas Timinskas"]
 readme = "README.md"
 
@@ -49,6 +49,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.ruff]
 line-length = 88
 target-version = "py312"
+extend-exclude = ["*.ipynb"]
 
 [tool.ruff.lint]
 select = ["ALL"]
@@ -56,19 +57,29 @@ ignore = [
   "ANN002",  # Missing type annotation for args
   "ANN003",  # Missing type annotation for kwarg
   "ANN401",  # Dynamic type annotations
+  "C901",    # Complex functions are acceptable for small Streamlit callbacks
   "COM812",  # Missing trailing comma
+  "D102",    # Missing docstring in public method
+  "D105",    # Missing docstring in magic method
+  "D107",    # Missing docstring in __init__
   "D100",    # Missing docstring in public module
   "D101",    # Missing docstring in public class (for obvious classes)
   "D103",    # Missing docstring in public function (for obvious functions)
   "D104",    # Missing docstring in public package
+  "E501",    # Long prompt strings are more readable unwrapped
   "FBT001",  # Bool use in arg
   "FBT002",  # Default bool use in arg
   "G004",    # Logging with f-strings
   "INP001",  # Missing __init__.py in package
   "PLR0913", # Too many arguments (ignored if default args are used)
   "S101",    # Use of assert
+  "S108",    # Configurable temp paths may default to /tmp
+  "S603",    # subprocess is used with shell=False for Real-ESRGAN
   "SLF001",  # Access to a private member (for tests only)
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN001", "PLR2004"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -77,3 +88,7 @@ convention = "google"
 docstring-quotes = "double"
 inline-quotes = "double"
 multiline-quotes = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

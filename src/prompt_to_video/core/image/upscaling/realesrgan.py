@@ -2,17 +2,26 @@ import logging
 import subprocess
 from pathlib import Path
 
-from prompt_to_video.core.image.upscaling import ImageUpscaler
+from prompt_to_video.core.image.upscaling.abstract import ImageUpscaler
+from prompt_to_video.settings import REALESRGAN_BINARY, REALESRGAN_MODEL_PATH
 
 LOGGER = logging.getLogger(__name__)
 
 
 class RealesrganUpscaler(ImageUpscaler):
-    def __init__(self) -> None:
-        """Initializes the Upscaler class.
+    """Upscale images with the Real-ESRGAN NCNN Vulkan binary."""
 
-        Currently, this constructor does not perform any operations.
-        """
+    def __init__(
+        self,
+        binary_path: str | Path = REALESRGAN_BINARY,
+        model_path: str | Path = REALESRGAN_MODEL_PATH,
+        model: str = "realesrgan-x4plus",
+        upscale_factor: int = 4,
+    ) -> None:
+        self.binary_path = Path(binary_path)
+        self.model_path = Path(model_path)
+        self.model = model
+        self.upscale_factor = upscale_factor
 
     def upscale_image(
         self,
@@ -20,60 +29,46 @@ class RealesrganUpscaler(ImageUpscaler):
         save_path: str | Path,
         prompt: str = "",
     ) -> bool:
-        """Upscale a low-resolution image using Real-ESRGAN.
+        """Upscale a low-resolution image using Real-ESRGAN."""
+        if prompt:
+            LOGGER.info("Real-ESRGAN does not use text prompts; ignoring prompt.")
+        if not self.binary_path.exists():
+            LOGGER.error("Real-ESRGAN binary not found: %s", self.binary_path)
+            return False
 
-        Args:
-            input_path (str | Path): The path to the low-res input image.
-            save_path (str | Path): The path to save the upscaled image.
-            prompt (str): The textual description to guide the upscaling.
-                Defaults to an empty string.
-
-        Returns:
-            bool: True if the image was successfully upscaled, False otherwise.
-        """
-        upscale_factor = 4
-        LOGGER.info(f"Prompt not used: {prompt}")
-        model = "realesrgan-x4plus"
-        model_path = "hf_cache/realesrgan-models/"
-        LOGGER.info("Upscaling %s to %s using Real-ESRGAN.", input_path, save_path)
-        # Enhance image using Real-ESRGAN
-        enhance_command = [
-            "./hf_cache/realesrgan-ncnn-vulkan/realesrgan-ncnn-vulkan",
+        save = Path(save_path)
+        save.parent.mkdir(parents=True, exist_ok=True)
+        command = [
+            str(self.binary_path),
             "-i",
-            input_path,
+            str(input_path),
             "-o",
-            save_path,
+            str(save),
             "-n",
-            model,
+            self.model,
             "-m",
-            model_path,
+            str(self.model_path),
             "-s",
-            str(upscale_factor),
+            str(self.upscale_factor),
             "-f",
-            "jpg",
+            save.suffix.lstrip(".") or "jpg",
         ]
 
         try:
-            # Sanitize input to prevent execution of untrusted input
-            # Sanitize input to prevent execution of untrusted input
-            sanitized_command = [str(arg) for arg in enhance_command]
-
-            # Ensure the command is safe by avoiding shell=True
-            result = subprocess.run(  # noqa: S603 RUF100
-                sanitized_command,
+            result = subprocess.run(
+                command,
                 check=True,
                 capture_output=True,
                 text=True,
                 shell=False,
             )
-            LOGGER.info("Enhancing %s to %s", input_path, save_path)
-            LOGGER.info(result.stdout)
-            LOGGER.error(result.stderr)
-            LOGGER.info("Upscaled %s and saved to %s", input_path, save_path)
-            return True  # noqa: TRY300
         except subprocess.CalledProcessError:
-            LOGGER.exception(
-                "Error during image enhancement for %s",
-                input_path,
-            )
+            LOGGER.exception("Error during image enhancement for %s", input_path)
             return False
+
+        if result.stdout:
+            LOGGER.info(result.stdout)
+        if result.stderr:
+            LOGGER.warning(result.stderr)
+        LOGGER.info("Upscaled %s and saved to %s", input_path, save)
+        return True

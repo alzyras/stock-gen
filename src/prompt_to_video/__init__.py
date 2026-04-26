@@ -3,8 +3,8 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 
-def setup_logging() -> logging.Logger:
-    """Set up logging configuration."""
+def setup_logging() -> None:
+    """Set up default logging configuration for CLI/notebook usage."""
     logging.basicConfig(
         format="%(asctime)s [%(levelname)s] - <%(name)s> - %(message)s",
         level=logging.INFO,
@@ -13,27 +13,25 @@ def setup_logging() -> logging.Logger:
 
 
 def load_environment_variables() -> str:
+    """Load .env values when python-dotenv is installed."""
     try:
         from dotenv import load_dotenv
-
-        if load_dotenv():
-            return "Loaded environment variables from .env file."
-        return (  # noqa: TRY300
-            "No .env file found, skipping environment variable loading."
-        )
     except ImportError:
-        return (
-            "Can't import dotenv & load .env, this is expected if running via Docker."
-        )
+        return "python-dotenv is not installed; skipping .env loading."
+
+    if load_dotenv():
+        return "Loaded environment variables from .env file."
+    return "No .env file found; skipping environment variable loading."
 
 
 def initialize() -> None:
+    """Initialize logging and optional .env loading."""
     setup_logging()
     env_message = load_environment_variables()
-    if "Loaded" in env_message:
+    if env_message.startswith("Loaded"):
         LOGGER.info(env_message)
     else:
-        LOGGER.warning(env_message)
+        LOGGER.debug(env_message)
 
 
 initialize()

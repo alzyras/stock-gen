@@ -21,7 +21,6 @@ hf_cache/realesrgan-ncnn-vulkan/*
 env/
 .venv
 venv
-poetry.lock
 .poetry
 
 # Unit test / coverage reports
@@ -38,6 +37,7 @@ coverage.xml
 
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/
+*.ipynb
 
 # Mac OS-specific storage files
 .DS_Store
@@ -55,7 +55,7 @@ credentials.json
 .env
 
 # Test scripts
-test*
+test.ipynb
 
 # Ignore everything in image_store
 data/*
@@ -68,6 +68,12 @@ data/*
 *.mp4
 *.srt
 *.mp3
+*.db
+*.sqlite
+*.sqlite3
+*.zip
+video_script.yaml
 store/projects/*
 hf_cache
-
+notebooks/
+outputs/

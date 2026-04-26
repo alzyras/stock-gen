@@ -17,9 +17,9 @@ class PromptTemplate:
             content = message["content"]
             vars_in_message = re.findall(pattern, content)
             self.required_vars.extend(vars_in_message)
-        self.required_vars = list(set(self.required_vars))
+        self.required_vars = sorted(set(self.required_vars))
 
-    def render(self, **kwargs: dict[str, Any]) -> list[dict[str, str]]:
+    def render(self, **kwargs: Any) -> list[dict[str, str]]:
         """Render the messages with the given variables."""
         missing_vars = set(self.required_vars) - set(kwargs.keys())
         unexpected_vars = set(kwargs.keys()) - set(self.required_vars)

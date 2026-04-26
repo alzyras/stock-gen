@@ -1,71 +1,136 @@
+import hashlib
+import re
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
+
 import torch
 from diffusers import FluxPipeline
-from PIL.Image import Image
+from PIL import Image as PILImage
 
 from prompt_to_video.settings import IMAGE_GENERATION_MODEL, USE_MPS
 
 
+@dataclass
+class ImageData:
+    """Generated image plus the metadata needed by the app and asset pipeline."""
+
+    image: PILImage.Image
+    prompt: str
+    path: str = "data/images"
+    identifier: str | None = None
+    title: str | None = None
+    description: str | None = None
+    categories: list[str] = field(default_factory=list)
+
+    def __post_init__(self) -> None:
+        self.identifier = self.identifier or _prompt_identifier(self.prompt)
+        self.title = self.title or self.prompt[:80]
+        self.description = self.description or self.prompt
+
+    def save_image(self, path: str | Path | None = None) -> Path:
+        """Save the generated image and return the output path."""
+        output_path = (
+            Path(path)
+            if path is not None
+            else Path(self.path) / f"{self.identifier}.png"
+        )
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        self.image.save(output_path)
+        return output_path
+
+    def get_categories(self, _llm_client: Any | None = None) -> list[str]:
+        """Populate basic categories without requiring an LLM call."""
+        if self.categories:
+            return self.categories
+        words = re.findall(r"[A-Za-z][A-Za-z-]{2,}", self.prompt.lower())
+        stop_words = {"and", "the", "for", "with", "from", "into", "that", "this"}
+        self.categories = [
+            word for word in dict.fromkeys(words) if word not in stop_words
+        ][:8]
+        return self.categories
+
+    def model_dump_json(self, *, exclude: set[str] | None = None) -> str:
+        """Small compatibility shim for the Streamlit app's previous Pydantic model."""
+        import json
+
+        excluded = exclude or set()
+        data = {
+            "prompt": self.prompt,
+            "path": self.path,
+            "identifier": self.identifier,
+            "title": self.title,
+            "description": self.description,
+            "categories": self.categories,
+        }
+        return json.dumps(
+            {key: value for key, value in data.items() if key not in excluded}
+        )
+
+
+def _prompt_identifier(prompt: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", prompt.lower()).strip("-")[:48]
+    digest = hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:8]
+    return f"{slug or 'image'}-{digest}"
+
+
 class ImageGenerator:
-    """Class to generate images using the FluxPipeline with optimized VRAM settings."""
+    """Generate images using FluxPipeline with a stable application-facing API."""
 
     def __init__(
         self,
         model_name: str = IMAGE_GENERATION_MODEL,
-        cpu_offload: bool = True,
+        cpu_offload: bool = False,
         precision: torch.dtype = torch.float16,
         use_mps: bool = USE_MPS,
     ) -> None:
-        """Initializes the image generation with a specified model.
+        self.model_name = model_name
+        self.llm_client = None
+        device = "mps" if use_mps and torch.backends.mps.is_available() else None
+        dtype = torch.float16 if device == "mps" else precision
 
-        Args:
-            model_name (str): Name of the pretrained model to load.
-            cpu_offload (bool): Flag to enable CPU offloading for the model.
-            precision (torch.dtype): Precision for the model, defaults to torch.float16.
-            use_mps (bool): Flag to enable Mixed Precision Scoring (MPS) for the model.
-        """
-        if use_mps:
-            self.pipe = FluxPipeline.from_pretrained(
-                model_name, torch_dtype=torch.bfloat16
-            ).to("mps")
-        else:
-            self.pipe = FluxPipeline.from_pretrained(
-                model_name, torch_dtype=torch.float16
-            )
+        self.pipe = FluxPipeline.from_pretrained(model_name, torch_dtype=dtype)
         if cpu_offload:
             self.pipe.enable_sequential_cpu_offload()
             self.pipe.vae.enable_slicing()
             self.pipe.vae.enable_tiling()
-            self.pipe.to(precision)
+        elif device is not None:
+            self.pipe = self.pipe.to(device)
 
     def generate_image(
         self,
-        prompt: str,
+        prompt: str | None = None,
+        *,
+        theme_prompt: str | None = None,
+        subfolder: str | Path | None = None,
         guidance_scale: float = 0.0,
         height: int = 1024,
         width: int = 1024,
         num_inference_steps: int = 1,
         max_sequence_length: int = 256,
-    ) -> Image:
-        """Generates and saves an image based on the given prompt and settings.
+        seed: int | None = None,
+    ) -> ImageData:
+        """Generate an image and return it with metadata."""
+        final_prompt = prompt or theme_prompt
+        if not final_prompt:
+            msg = "Either prompt or theme_prompt must be provided."
+            raise ValueError(msg)
 
-        Args:
-            prompt (str): Text prompt to guide image generation.
-            subfolder (str): Subfolder to save the generated image.
-            guidance_scale (float): Guidance scale to adjust adherence to the prompt.
-            height (int): Height of the generated image in pixels.
-            width (int): Width of the generated image in pixels.
-            num_inference_steps (int): Number of steps for inference.
-            max_sequence_length (int): Maximum sequence length for the prompt.
+        generator = None
+        if seed is not None:
+            generator = torch.Generator("cpu").manual_seed(seed)
 
-        Returns:
-            PictureData: Object containing the generated image metadata.
-        """
-        return self.pipe(
-            prompt=prompt,
+        image = self.pipe(
+            prompt=final_prompt,
             guidance_scale=guidance_scale,
             height=height,
             width=width,
             num_inference_steps=num_inference_steps,
             max_sequence_length=max_sequence_length,
-            generator=torch.Generator("cpu").manual_seed(0),
+            generator=generator,
         ).images[0]
+        return ImageData(
+            image=image,
+            prompt=final_prompt,
+            path=str(subfolder) if subfolder is not None else "data/images",
+        )
